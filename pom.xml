@@ -9,8 +9,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
-        </properties>
-       <!-- Obavezno jedan element dependencies --> 
+    </properties>
+    <!-- Obavezno jedan element dependencies --> 
     <dependencies>  
         
         <!-- Unutar dependencies dodavati zavisnosti -->
@@ -21,6 +21,12 @@
             <version>2.6.2</version>
         </dependency>
 
+     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.20.Final</version>
+        </dependency>
 
         
         

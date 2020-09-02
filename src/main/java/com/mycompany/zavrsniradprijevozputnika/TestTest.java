@@ -5,12 +5,15 @@
  */
 package com.mycompany.zavrsniradprijevozputnika;
 
+import hr.edunova.horvat.utility.HibernateUtil;
+
 /**
  *
  * @author Josip
  */
 public class TestTest {
     public static void main(String[] args) {
-        System.out.println("Test");
+        HibernateUtil.getSessionFactory().openSession();
+        System.out.println("Test za hibernate");
     }
 }
