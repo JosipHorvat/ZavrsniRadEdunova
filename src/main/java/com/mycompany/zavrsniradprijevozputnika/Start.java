@@ -11,9 +11,9 @@ import hr.edunova.horvat.utility.HibernateUtil;
  *
  * @author Josip
  */
-public class TestTest {
+public class Start {
     public static void main(String[] args) {
         HibernateUtil.getSessionFactory().openSession();
-        System.out.println("Test za hibernate");
+       // System.out.println("Test za hibernate");
     }
 }

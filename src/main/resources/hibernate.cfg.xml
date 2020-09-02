@@ -46,6 +46,7 @@ POTREBNO JE RUCNO KREIRATI BAZU
         
         <!-- Ovdje navodimo naše mapirane klase -->
           <mapping class="hr.edunova.horvat.model.Vozac" />
+           <mapping class="hr.edunova.horvat.model.Vozilo" />
         
         
 
