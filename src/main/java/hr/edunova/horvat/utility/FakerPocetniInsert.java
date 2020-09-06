@@ -1,8 +1,14 @@
 
 package hr.edunova.horvat.utility;
 
+import com.github.javafaker.Faker;
+import hr.edunova.horvat.model.Prijevoz;
 import hr.edunova.horvat.model.Proizvodjac;
+import hr.edunova.horvat.model.Vozac;
+import hr.edunova.horvat.model.Vozilo;
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import org.hibernate.Session;
 
 /**
@@ -22,8 +28,62 @@ public class FakerPocetniInsert {
         session.save(opel);
         session.save(seat);
         session.save(volkswagen);
-        session.getTransaction().commit();
+       // session.getTransaction().commit();
+    
+    
+    Faker faker = new Faker();
+    
+     String[] oibi = {"44879378548","38714462960","48653367511",
+            "07463739447","55376858772","57121746664","45088797644","97067197029",
+            "36388448333","13633152331"};
+     
+    
+    Vozac vozac;
+    Vozilo vozilo;
+    Prijevoz prijevoz;
+    
+    for(int i =0; i<10; i++){
+        vozac = new Vozac();
+        vozac.setIme(faker.name().firstName());
+        vozac.setPrezime(faker.name().lastName());
+        vozac.setOib(oibi[i]);
+        vozac.setVerificiran(PomocnaMetoda.randomBoolean());
+        vozac.setDatumRodjenja(faker.date().birthday(10, 100));
+        //vozac.setVozilo();
+        session.save(vozac);
+        
     }
+    for(int i =0; i<10; i++){
+        vozilo = new Vozilo();
+        vozilo.setBojaVozila(faker.color().name());
+        vozilo.setOsiguran(PomocnaMetoda.randomBoolean());
+        vozilo.setProizvodjac(volkswagen);
+        vozilo.setRegistracijskaOznaka(faker.leagueOfLegends().rank());
+        vozilo.setUkupnoPredjenihKm(new BigDecimal(i*10));
+        session.save(vozilo);
+    }
+    for(int i = 0; i<10; i++){
+        prijevoz = new Prijevoz();
+        prijevoz.setBrojPutnika(faker.random().nextInt(1, 10));
+        prijevoz.setCijena(new BigDecimal(i+10));
+        prijevoz.setOdrediste(faker.address().fullAddress());
+        prijevoz.setPolaziste(faker.address().fullAddress());
+        prijevoz.setUkupnoKm(BigDecimal.valueOf(i*15));
+       // prijevoz.setVozac(vozac);
+       session.save(prijevoz);
+        
+    }
+    
+    session.getTransaction().commit();
+    
+    
+    }
+    
+   
+    
+ 
+    
+    
     
     private static Proizvodjac createProizvodjac(String naziv, String model, Date datumProizvodnje, Integer brojVrata, Integer kW ){
         Proizvodjac proizvodjac = new Proizvodjac();
