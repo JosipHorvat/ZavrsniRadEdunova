@@ -6,14 +6,14 @@
 package com.mycompany.zavrsniradprijevozputnika;
 
 import hr.edunova.horvat.utility.HibernateUtil;
-
+import hr.edunova.horvat.utility.FakerPocetniInsert;
 /**
  *
  * @author Josip
  */
 public class Start {
     public static void main(String[] args) {
-        HibernateUtil.getSessionFactory().openSession();
-       // System.out.println("Test za hibernate");
+      //  HibernateUtil.getSessionFactory().openSession();
+      FakerPocetniInsert.izvedi();
     }
 }
