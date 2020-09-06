@@ -5,25 +5,44 @@
  */
 package hr.edunova.horvat.model;
 
+import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Josip
  */
 @Entity
+@Table(name = "vozilo")
 public class Vozilo extends Etintet{
-    
-//    create table vozilo (
-//sifra int not null primary key auto_increment,
-//proizvodjac int not null,
-//boja varchar(50) not null,
-//registracijskaOznaka varchar(20) not null
-//);
+
     private String registracijskaOznaka;
     private Boolean osiguran;
     private String bojaVozila;
-    private Integer brojVrata;
+    private BigDecimal ukupnoPredjenihKm;
+    
+    @ManyToOne
+    private Proizvodjac proizvodjac;
+
+    public Proizvodjac getProizvodjac() {
+        return proizvodjac;
+    }
+
+    public void setProizvodjac(Proizvodjac proizvodjac) {
+        this.proizvodjac = proizvodjac;
+    }
+    
+
+    public BigDecimal getUkupnoPredjenihKm() {
+        return ukupnoPredjenihKm;
+    }
+
+    public void setUkupnoPredjenihKm(BigDecimal ukupnoPredjenihKm) {
+        this.ukupnoPredjenihKm = ukupnoPredjenihKm;
+    }
+   
 
     public String getRegistracijskaOznaka() {
         return registracijskaOznaka;
@@ -49,13 +68,7 @@ public class Vozilo extends Etintet{
         this.bojaVozila = bojaVozila;
     }
 
-    public Integer getBrojVrata() {
-        return brojVrata;
-    }
-
-    public void setBrojVrata(Integer brojVrata) {
-        this.brojVrata = brojVrata;
-    }
+  
     
     
 }
