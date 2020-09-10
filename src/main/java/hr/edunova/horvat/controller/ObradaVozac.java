@@ -12,6 +12,10 @@ public class ObradaVozac extends Obrada<Vozac>{
     public ObradaVozac(Vozac vozac){
         super(vozac);
     }
+    
+    public ObradaVozac(){
+        super();
+    }
 
     @Override
     protected void kontrolaCreate() throws MyException {
