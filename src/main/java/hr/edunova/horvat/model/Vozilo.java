@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "vozilo")
-public class Vozilo extends Etintet{
+public class Vozilo extends Entitet{
 
     private String registracijskaOznaka;
     private Boolean osiguran;

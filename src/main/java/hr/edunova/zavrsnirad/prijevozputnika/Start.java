@@ -1,5 +1,5 @@
 
-package com.mycompany.zavrsniradprijevozputnika;
+package hr.edunova.zavrsnirad.prijevozputnika;
 
 import hr.edunova.horvat.controller.ObradaVozac;
 import hr.edunova.horvat.model.Vozac;

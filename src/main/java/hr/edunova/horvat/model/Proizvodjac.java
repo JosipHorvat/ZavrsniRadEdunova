@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "proizvodjac")
-public class Proizvodjac extends Etintet{
+public class Proizvodjac extends Entitet{
     
     private String naziv;
     private String model;

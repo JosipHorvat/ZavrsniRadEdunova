@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
  */
 
 @MappedSuperclass
-public abstract class Etintet {
+public abstract class Entitet {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
