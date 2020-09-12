@@ -18,11 +18,12 @@ public abstract class Obrada<T> {
 
     protected T entitet;
     protected Session session;
-
+    
+    public abstract List<T> getPodaci();
     protected abstract void kontrolaCreate() throws MyException;
     protected abstract void kontrolaUpdate() throws MyException;
     protected abstract void kontrolaDelete() throws MyException;
-
+   
     public Obrada(T entitet) {
         this();
         this.entitet = entitet;

@@ -1,11 +1,16 @@
 package hr.edunova.zavrsnirad.prijevozputnika;
 
 import hr.edunova.horvat.controller.ObradaVozac;
+import hr.edunova.horvat.controller.ObradaVozilo;
 import hr.edunova.horvat.model.Vozac;
+import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.utility.HibernateUtil;
 import hr.edunova.horvat.utility.FakerPocetniInsert;
 import hr.edunova.horvat.utility.MyException;
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,37 +21,51 @@ import java.util.logging.Logger;
 public class Start {
 
     public static void main(String[] args) {
-        //  HibernateUtil.getSessionFactory().openSession();
-        //  FakerPocetniInsert.izvedi();
-
-        // TEST utf8
-       // System.out.println("škola");
-
+      /*
+        Nastavak: Kontrola za Proizvodjac, Vozilo.
+        Dodati u Vozac/Vozilo String ne moze biti broj
+        Duzina veca od 50 znakova....
+        */
+   
+ //===========TEST ZA VOZILO================     
+//      Vozilo vozilo = new Vozilo();
+//      vozilo.setBojaVozila("1");
+//      vozilo.setUkupnoPredjenihKm(BigDecimal.ONE);
+//      vozilo.setRegistracijskaOznaka("OS-705-IB");
+//      vozilo.setOsiguran(Boolean.TRUE);
+//     // vozilo.setProizvodjac(proizvodjac);
+//      
+//      ObradaVozilo obradaVozilo = new ObradaVozilo();
+//        obradaVozilo.setEntitet(vozilo);
+//        try {
+//            obradaVozilo.create();
+//          } catch (MyException ex) {
+//              System.out.println(ex.getPoruka());
+//        }   
+            
+            
+ //=============TEST ZA VOZAC===================
         Vozac vozac = new Vozac();
-
-        ObradaVozac obradaVozac = new ObradaVozac(vozac);
-        List<Vozac> listaVozaca = new ArrayList<>();
-        
-        long pocetak = System.currentTimeMillis();
-        
-        for (int i =0; i<1000; i++){
-        vozac = new Vozac();
-        vozac.setIme("Tomo");
-     
+        vozac.setIme("1");
+        vozac.setOib("79335008696");
+        vozac.setPrezime("Horvat");
+        vozac.setVerificiran(true);
+//########  NAUCITI KAKO ODRADITI DATUM I STRANI KLJUC ##########
+       // vozac.setVozilo(vozilo);
+       // vozac.setDatumRodjenja();
        
-        listaVozaca.add(vozac);
-             try {
-            obradaVozac.createAll(listaVozaca);
+        ObradaVozac ov = new ObradaVozac();
+        ov.setEntitet(vozac);
+        try {
+            ov.create();
         } catch (MyException ex) {
             System.out.println(ex.getPoruka());
         }
-        }
+
+
+//============== FAKER POCETNI INSERT ===================
+//       HibernateUtil.getSessionFactory().openSession();
+//        FakerPocetniInsert.izvedi();
        
-        long kraj = System.currentTimeMillis();
-        
-        System.out.println(kraj - pocetak);
-        //Prvi test = 40393
-        //Drugi test 39893
-        //Treci test 37041
     }
 }
