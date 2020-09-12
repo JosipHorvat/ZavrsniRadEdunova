@@ -7,6 +7,7 @@ package hr.edunova.horvat.controller;
 
 import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.utility.MyException;
+import hr.edunova.horvat.utility.PomocnaMetoda;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -43,24 +44,15 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 // I pregledati ostale kontrole ako nesto moze bolje
 
    private void kontrolaBojaVozila() throws MyException{
-       //neMozeBitiBroj("Nepoznata boja");
+       PomocnaMetoda.neMozeBitiBroj(entitet.getBojaVozila(),"Nepoznata boja");
        if(entitet.getBojaVozila()== null || entitet.getBojaVozila().isEmpty()){
            throw new MyException("Boja vozila mora biti unesena");
        }
        if(entitet.getBojaVozila().length()>50){
            throw new MyException("Boja ne moze biti duza od 50 znakova ");
-       }
-         boolean broj = false;
-       try{
-          new BigDecimal(entitet.getBojaVozila());
-           broj = true;
-       }catch(Exception e){
-       }
-           if(broj){
-               throw new MyException("Boja ne moze biti broj");
-           }
+       }   
        
-       
+      
    }
    private void kontrolaRegistracijskaOznaka() throws MyException{
        if(entitet.getRegistracijskaOznaka()== null || entitet.getRegistracijskaOznaka().isEmpty()){
@@ -84,7 +76,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
            throw new MyException(poruka);
            }
        }
- 
-  
-    
+
+
+   
 }

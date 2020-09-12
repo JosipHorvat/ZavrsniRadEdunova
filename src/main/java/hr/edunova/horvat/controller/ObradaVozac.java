@@ -4,6 +4,7 @@ package hr.edunova.horvat.controller;
 import hr.edunova.horvat.model.Vozac;
 import hr.edunova.horvat.utility.MyException;
 import hr.edunova.horvat.utility.Oib;
+import hr.edunova.horvat.utility.PomocnaMetoda;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -44,12 +45,13 @@ public class ObradaVozac extends Obrada<Vozac>{
     }
     
  private void kontrolaIme() throws MyException{
-     //neMozeBitiBroj("Ime ne moze biti broj");
+     PomocnaMetoda.neMozeBitiBroj(entitet.getIme(),"Ime ne moze biti broj");
      if(entitet.getIme()== null || entitet.getIme().isEmpty()){
          throw new MyException("Ime se mora unijeti");
      }
  }
  private void kontrolaPrezime() throws MyException{
+     PomocnaMetoda.neMozeBitiBroj(entitet.getIme(), "Prezime ne moze biti broj");
      if(entitet.getPrezime()== null || entitet.getPrezime().isEmpty()){
          throw new MyException("Prezime se mora unijeti");
      }
@@ -70,18 +72,7 @@ public class ObradaVozac extends Obrada<Vozac>{
         }
         
     }
-//      private void neMozeBitiBroj(String poruka) throws MyException{
-//       boolean broj = false;
-//       try{
-//           new BigDecimal(entitet.getIme());
-//           broj = true;
-//       }catch(Exception e){
-//           if(broj){
-//               throw new MyException(poruka);
-//           }
-//      }
-//  }
-// 
    
-    
+ 
+   
 }

@@ -19,6 +19,15 @@ public class PomocnaMetoda {
        return rand.nextBoolean();
     }
     
-  
-    
+     public static void neMozeBitiBroj(String stringVrijednost, String poruka) throws MyException{
+       boolean broj = false;
+       try{
+           new BigDecimal(stringVrijednost);
+           broj = true;
+       }catch(Exception e){
+           }
+           if(broj){
+               throw new MyException(poruka);
+           }
+  }   
 }

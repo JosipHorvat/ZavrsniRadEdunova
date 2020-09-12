@@ -46,7 +46,7 @@ public class Start {
             
  //=============TEST ZA VOZAC===================
         Vozac vozac = new Vozac();
-        vozac.setIme("1");
+        vozac.setIme("1222");
         vozac.setOib("79335008696");
         vozac.setPrezime("Horvat");
         vozac.setVerificiran(true);
