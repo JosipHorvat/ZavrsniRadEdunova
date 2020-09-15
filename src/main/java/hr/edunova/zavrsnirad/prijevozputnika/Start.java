@@ -22,14 +22,15 @@ import java.util.logging.Logger;
 public class Start {
 
     public static void main(String[] args) {
-        
-        new Izbornik().setVisible(true);
-      /*
+        FakerPocetniInsert.izvedi();
+          /*
         Nastavak: Kontrola za Proizvodjac, Vozilo.
         Dodati u Vozac/Vozilo String ne moze biti broj
         Duzina veca od 50 znakova....
         */
-   
+ //============= TEST JFRAME=======================       
+       // new Izbornik().setVisible(true);
+       
  //===========TEST ZA VOZILO================     
 //      Vozilo vozilo = new Vozilo();
 //      vozilo.setBojaVozila("1");

@@ -11,16 +11,9 @@ import java.util.List;
 /**
  * @author Josip
  */
-public class ObradaVozac extends Obrada<Vozac>{
+public class ObradaVozac extends ObradaOsoba<Vozac>{
     
-    public ObradaVozac(Vozac vozac){
-        super(vozac);
-    }
-    
-    public ObradaVozac(){
-        super();
-    }
-    
+      
      @Override
     public List<Vozac> getPodaci() {
         return session.createQuery("from Vozac").list();
@@ -28,9 +21,7 @@ public class ObradaVozac extends Obrada<Vozac>{
 
     @Override
     protected void kontrolaCreate() throws MyException {
-        kontrolaIme();
-        kontrolaOib();
-        kontrolaPrezime();
+        super.kontrolaCreate();
         kontrolaVerificiran();
     }
 
@@ -43,28 +34,7 @@ public class ObradaVozac extends Obrada<Vozac>{
     protected void kontrolaDelete() throws MyException {
 
     }
-    
- private void kontrolaIme() throws MyException{
-     PomocnaMetoda.neMozeBitiBroj(entitet.getIme(),"Ime ne moze biti broj");
-     if(entitet.getIme()== null || entitet.getIme().isEmpty()){
-         throw new MyException("Ime se mora unijeti");
-     }
- }
- private void kontrolaPrezime() throws MyException{
-     PomocnaMetoda.neMozeBitiBroj(entitet.getIme(), "Prezime ne moze biti broj");
-     if(entitet.getPrezime()== null || entitet.getPrezime().isEmpty()){
-         throw new MyException("Prezime se mora unijeti");
-     }
- }
- protected void kontrolaOib() throws MyException{
-     if(entitet.getOib()==null || entitet.getOib().isEmpty()){
-         throw new MyException("Unos OIB-a je obavezan");
-     }
-
-     if(!Oib.isValjan(entitet.getOib())){
-         throw new MyException("OIB nije valjan");
-     }
-    }
+ // U obradi vozac je potrebna obrada za Date i mozda za ??Vozilo??   
 // za ovo upitati 
     private void kontrolaVerificiran() throws MyException{
         if(entitet.getVerificiran() == null){

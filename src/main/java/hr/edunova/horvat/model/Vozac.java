@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "vozac")
-public class Vozac extends Entitet{
+public class Vozac extends Osoba{
     
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,22 +37,6 @@ public class Vozac extends Entitet{
         this.vozilo = vozilo;
     }
 
-    public String getIme() {
-        return ime;
-    }
-
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public String getPrezime() {
-        return prezime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
     public Boolean getVerificiran() {
         return verificiran;
     }
@@ -68,15 +52,4 @@ public class Vozac extends Entitet{
     public void setDatumRodjenja(Date datumRodjenja) {
         this.datumRodjenja = datumRodjenja;
     }
-
-    public String getOib() {
-        return oib;
-    }
-
-    public void setOib(String oib) {
-        this.oib = oib;
-    }
-    
-    
-    
 }
