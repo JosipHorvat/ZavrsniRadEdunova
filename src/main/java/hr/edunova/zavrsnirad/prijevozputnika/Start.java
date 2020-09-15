@@ -7,6 +7,7 @@ import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.utility.HibernateUtil;
 import hr.edunova.horvat.utility.FakerPocetniInsert;
 import hr.edunova.horvat.utility.MyException;
+import hr.edunova.horvat.view.Izbornik;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ import java.util.logging.Logger;
 public class Start {
 
     public static void main(String[] args) {
+        
+        new Izbornik().setVisible(true);
       /*
         Nastavak: Kontrola za Proizvodjac, Vozilo.
         Dodati u Vozac/Vozilo String ne moze biti broj
@@ -45,22 +48,22 @@ public class Start {
             
             
  //=============TEST ZA VOZAC===================
-        Vozac vozac = new Vozac();
-        vozac.setIme("1222");
-        vozac.setOib("79335008696");
-        vozac.setPrezime("Horvat");
-        vozac.setVerificiran(true);
+//        Vozac vozac = new Vozac();
+//        vozac.setIme("1222");
+//        vozac.setOib("79335008696");
+//        vozac.setPrezime("Horvat");
+//        vozac.setVerificiran(true);
 //########  NAUCITI KAKO ODRADITI DATUM I STRANI KLJUC ##########
        // vozac.setVozilo(vozilo);
        // vozac.setDatumRodjenja();
        
-        ObradaVozac ov = new ObradaVozac();
-        ov.setEntitet(vozac);
-        try {
-            ov.create();
-        } catch (MyException ex) {
-            System.out.println(ex.getPoruka());
-        }
+//        ObradaVozac ov = new ObradaVozac();
+//        ov.setEntitet(vozac);
+//        try {
+//            ov.create();
+//        } catch (MyException ex) {
+//            System.out.println(ex.getPoruka());
+//        }
 
 
 //============== FAKER POCETNI INSERT ===================
