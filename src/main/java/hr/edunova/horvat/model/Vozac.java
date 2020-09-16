@@ -16,16 +16,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "vozac")
 public class Vozac extends Osoba{
-    
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-    private String ime;
-    private String prezime;
+  
     private Boolean verificiran;
     private Date datumRodjenja;
-    private String oib;
-
+    
     @ManyToOne
     private Vozilo vozilo;
 

@@ -22,16 +22,20 @@ import java.util.logging.Logger;
 public class Start {
 
     public static void main(String[] args) {
-        FakerPocetniInsert.izvedi();
+        
           /*
         Nastavak: Kontrola za Proizvodjac, Vozilo.
         Dodati u Vozac/Vozilo String ne moze biti broj
         Duzina veca od 50 znakova....
         */
- //============= TEST JFRAME=======================       
-       // new Izbornik().setVisible(true);
+          
+          
+//=============UNOS PODATAKA SA FAKER=============         
+//         FakerPocetniInsert.izvedi();
+//============= TEST JFRAME=======================       
+       new Izbornik().setVisible(true);
        
- //===========TEST ZA VOZILO================     
+//===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
 //      vozilo.setBojaVozila("1");
 //      vozilo.setUkupnoPredjenihKm(BigDecimal.ONE);
@@ -50,9 +54,10 @@ public class Start {
             
  //=============TEST ZA VOZAC===================
 //        Vozac vozac = new Vozac();
-//        vozac.setIme("1222");
+//        vozac.setIme("Tomo");
 //        vozac.setOib("79335008696");
 //        vozac.setPrezime("Horvat");
+//        vozac.setEmail("josiph988@gmail.com");
 //        vozac.setVerificiran(true);
 //########  NAUCITI KAKO ODRADITI DATUM I STRANI KLJUC ##########
        // vozac.setVozilo(vozilo);
