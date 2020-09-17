@@ -2,6 +2,8 @@
 package hr.edunova.horvat.utility;
 
 import com.github.javafaker.Faker;
+import hr.edunova.horvat.controller.ObradaOperater;
+import hr.edunova.horvat.model.Operater;
 import hr.edunova.horvat.model.Prijevoz;
 import hr.edunova.horvat.model.Proizvodjac;
 import hr.edunova.horvat.model.Vozac;
@@ -10,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  @author Josip
@@ -19,6 +22,24 @@ public class FakerPocetniInsert {
     public static void izvedi(){
         
         Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        Operater operater = new Operater();
+        operater.setIme("Josip");
+        operater.setPrezime("Horvat");
+        operater.setUloga("Admin");
+        operater.setEmail("josiph988@gmail.com");
+        operater.setOib("44879378548");
+        operater.setLozinka(BCrypt.hashpw("j", BCrypt.gensalt()));
+        
+        ObradaOperater obradaOperater = new ObradaOperater();
+        obradaOperater.setEntitet(operater);
+        
+        try{
+            obradaOperater.create();
+        }catch (MyException ex){
+            ex.printStackTrace();
+        }
+        
         
         Proizvodjac opel = createProizvodjac("Opel", "Corsa", new Date(), 5, 50);
         Proizvodjac seat = createProizvodjac("Seat", "Ibiza", new Date(), 5, 45);

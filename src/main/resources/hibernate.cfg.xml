@@ -35,7 +35,7 @@ POTREBNO JE RUCNO KREIRATI BAZU
             create-drop: drop the schema at the end of the session. 
             1. puta create-drop, poslije update
             -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <!-- dbcp connection pool configuration -->
         <property name="hibernate.dbcp.initialSize">5</property>
         <property name="hibernate.dbcp.maxTotal">20</property>
@@ -45,10 +45,11 @@ POTREBNO JE RUCNO KREIRATI BAZU
         
         
         <!-- Ovdje navodimo naše mapirane klase -->
-          <mapping class="hr.edunova.horvat.model.Vozac" />
-           <mapping class="hr.edunova.horvat.model.Vozilo" />
+        <mapping class="hr.edunova.horvat.model.Vozac" />
+        <mapping class="hr.edunova.horvat.model.Vozilo" />
         <mapping class="hr.edunova.horvat.model.Prijevoz" />
         <mapping class="hr.edunova.horvat.model.Proizvodjac" />
+        <mapping class="hr.edunova.horvat.model.Operater" />
         
 
         

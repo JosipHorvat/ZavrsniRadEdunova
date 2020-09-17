@@ -28,12 +28,12 @@ public class Start {
         Dodati u Vozac/Vozilo String ne moze biti broj
         Duzina veca od 50 znakova....
         */
-          
-          
+  
+        
 //=============UNOS PODATAKA SA FAKER=============         
-//         FakerPocetniInsert.izvedi();
+         FakerPocetniInsert.izvedi();
 //============= TEST JFRAME=======================       
-       new Izbornik().setVisible(true);
+//       new Izbornik().setVisible(true);
        
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
