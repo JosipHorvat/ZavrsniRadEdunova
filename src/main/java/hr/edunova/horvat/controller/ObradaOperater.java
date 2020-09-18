@@ -8,23 +8,29 @@ package hr.edunova.horvat.controller;
 import hr.edunova.horvat.model.Operater;
 import hr.edunova.horvat.utility.MyException;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
  * @author Josip
  */
 public class ObradaOperater extends ObradaOsoba<Operater>{
-    
-// public  Operater autoriziraj(String email, char[] lozinka){
-//       Operater operater = (Operater) session.createQuery(
-//       "from Operater o where o.email=:email")
-//               .setParameter("email", email).getSingleResult();
-//       if(operater== null){
-//           return null;
-//       }
-//       return null;
-// }
-
+    // dobro obratiti pozornost na ovu metodu
+ public  Operater autoriziraj(String email, char[] lozinka){
+     
+       Operater operater = (Operater) session.createQuery(
+       "from Operater o where o.email=:email")
+               .setParameter("email", email).getSingleResult();
+       
+       // ako operater nije pronadjen u bazi vraca se null
+       if(operater== null){
+           return null;
+       }
+       // ako je pronadjen u bazi provjeraca se BCrypt da li lozinka odgovara onoj u bazi, a ako ne vraca null
+       return BCrypt.checkpw(new String(lozinka), operater.getLozinka()) ? operater : null;
+       
+ }
+ 
     @Override
     public List<Operater> getPodaci() {
      return  session.createQuery("from Operater").list();

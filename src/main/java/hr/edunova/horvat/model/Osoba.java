@@ -50,7 +50,9 @@ public abstract class Osoba extends Entitet{
     public void setEmail(String email) {
         this.email = email;
     }
-    
+    public String getImeIPrezime(){
+        return getIme() + " " + getPrezime();
+    }
     
     
 }

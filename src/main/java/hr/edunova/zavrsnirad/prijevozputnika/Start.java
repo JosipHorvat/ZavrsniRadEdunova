@@ -7,7 +7,7 @@ import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.utility.HibernateUtil;
 import hr.edunova.horvat.utility.FakerPocetniInsert;
 import hr.edunova.horvat.utility.MyException;
-import hr.edunova.horvat.view.Izbornik;
+import hr.edunova.horvat.view.Test;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public class Start {
   
         
 //=============UNOS PODATAKA SA FAKER=============         
-         FakerPocetniInsert.izvedi();
+//         FakerPocetniInsert.izvedi();
 //============= TEST JFRAME=======================       
-//       new Izbornik().setVisible(true);
+//       new Test().setVisible(true);
        
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
