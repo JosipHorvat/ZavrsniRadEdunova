@@ -7,6 +7,7 @@ import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.utility.HibernateUtil;
 import hr.edunova.horvat.utility.FakerPocetniInsert;
 import hr.edunova.horvat.utility.MyException;
+import hr.edunova.horvat.view.Autorizacija;
 import hr.edunova.horvat.view.Test;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -24,6 +25,8 @@ public class Start {
     public static void main(String[] args) {
         
           /*
+        Pregledati ponovno tecaj od nez koje minute!!
+        
         Nastavak: Kontrola za Proizvodjac, Vozilo.
         Dodati u Vozac/Vozilo String ne moze biti broj
         Duzina veca od 50 znakova....
@@ -31,9 +34,9 @@ public class Start {
   
         
 //=============UNOS PODATAKA SA FAKER=============         
-//         FakerPocetniInsert.izvedi();
+  //       FakerPocetniInsert.izvedi();
 //============= TEST JFRAME=======================       
-//       new Test().setVisible(true);
+new Autorizacija().setVisible(true);
        
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
