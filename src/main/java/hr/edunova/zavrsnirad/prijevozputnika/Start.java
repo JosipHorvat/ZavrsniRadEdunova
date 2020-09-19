@@ -35,9 +35,12 @@ public class Start {
         
 //=============UNOS PODATAKA SA FAKER=============         
   //       FakerPocetniInsert.izvedi();
-//============= TEST JFRAME=======================       
-new Autorizacija().setVisible(true);
-       
+//============= AUTORIZACIJA JFRAME=======================       
+  new Autorizacija().setVisible(true);
+  
+ //===========UNOS ADMINA I OPERATERA ============= 
+    //FakerPocetniInsert.unosAdminOperatera();
+ 
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
 //      vozilo.setBojaVozila("1");

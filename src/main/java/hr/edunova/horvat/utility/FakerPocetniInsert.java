@@ -22,23 +22,7 @@ public class FakerPocetniInsert {
     public static void izvedi(){
         
         Session session = HibernateUtil.getSessionFactory().openSession();
-        
-        Operater operater = new Operater();
-        operater.setIme("Josip");
-        operater.setPrezime("Horvat");
-        operater.setUloga("Admin");
-        operater.setEmail("josiph988@gmail.com");
-        operater.setOib("44879378548");
-        operater.setLozinka(BCrypt.hashpw("j", BCrypt.gensalt()));
-        
-        ObradaOperater obradaOperater = new ObradaOperater();
-        obradaOperater.setEntitet(operater);
-        
-        try{
-            obradaOperater.create();
-        }catch (MyException ex){
-            ex.printStackTrace();
-        }
+                     
         
         
         Proizvodjac opel = createProizvodjac("Opel", "Corsa", new Date(), 5, 50);
@@ -116,4 +100,44 @@ public class FakerPocetniInsert {
         
         return proizvodjac;
     }
+    
+     public static void unosAdminOperatera(){
+       
+ //   Admin oper ne treba open session niti commit session jer to odradjuje obrada operatera/
+         
+        
+        Operater operaterAdmin = new Operater();
+        operaterAdmin.setIme("Boss");
+        operaterAdmin.setPrezime("Bigg");
+        operaterAdmin.setUloga("admin");
+        operaterAdmin.setEmail("bossadmin@net.hr");
+        operaterAdmin.setOib("44879378548");
+        operaterAdmin.setLozinka(BCrypt.hashpw("b", BCrypt.gensalt()));
+        
+        ObradaOperater obradaAdmin = new ObradaOperater();
+        obradaAdmin.setEntitet(operaterAdmin);
+        
+        try{
+            obradaAdmin.create();
+        }catch (MyException ex){
+            ex.printStackTrace();
+            
+        }
+        Operater operater = new Operater();
+        operater.setIme("Josip");
+        operater.setPrezime("Horvat");
+        operater.setUloga("operater");
+        operater.setEmail("josiph988@gmail.com");
+        operater.setOib("44879378548");
+        operater.setLozinka(BCrypt.hashpw("j", BCrypt.gensalt()));
+        
+        ObradaOperater obradaOperater = new ObradaOperater();
+        obradaOperater.setEntitet(operater);
+        
+         try{
+            obradaOperater.create();
+        }catch (MyException ex){
+            ex.printStackTrace();
+        }
+        }
 }
