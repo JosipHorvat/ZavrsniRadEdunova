@@ -45,7 +45,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 
    private void kontrolaBojaVozila() throws MyException{
        PomocnaMetoda.neMozeBitiBroj(entitet.getBojaVozila(),"Nepoznata boja");
-       if(entitet.getBojaVozila()== null || entitet.getBojaVozila().isEmpty()){
+       if(entitet.getBojaVozila()== null || entitet.getBojaVozila().trim().isEmpty()){
            throw new MyException("Boja vozila mora biti unesena");
        }
        if(entitet.getBojaVozila().length()>50){
@@ -55,7 +55,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
       
    }
    private void kontrolaRegistracijskaOznaka() throws MyException{
-       if(entitet.getRegistracijskaOznaka()== null || entitet.getRegistracijskaOznaka().isEmpty()){
+       if(entitet.getRegistracijskaOznaka()== null || entitet.getRegistracijskaOznaka().trim().isEmpty()){
            throw new MyException("Registracijska oznaka mora biti unesena");
        }
    }
@@ -76,6 +76,8 @@ public class ObradaVozilo extends Obrada<Vozilo>{
            throw new MyException(poruka);
            }
        }
+   
+   
 
 
    

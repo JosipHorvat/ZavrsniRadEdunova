@@ -1,7 +1,9 @@
 package hr.edunova.zavrsnirad.prijevozputnika;
 
+import hr.edunova.horvat.controller.ObradaPrijevoz;
 import hr.edunova.horvat.controller.ObradaVozac;
 import hr.edunova.horvat.controller.ObradaVozilo;
+import hr.edunova.horvat.model.Prijevoz;
 import hr.edunova.horvat.model.Vozac;
 import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.utility.HibernateUtil;
@@ -26,8 +28,8 @@ public class Start {
         
           /*
         Pregledati ponovno tecaj od nez koje minute!!
-        
-        Nastavak: Kontrola za Proizvodjac, Vozilo.
+        Vozac: preostaje kontrola za datum i vozilo;   
+        Vozilo preostaje kontrola za 
         Dodati u Vozac/Vozilo String ne moze biti broj
         Duzina veca od 50 znakova....
         */
@@ -36,11 +38,27 @@ public class Start {
 //=============UNOS PODATAKA SA FAKER=============         
   //       FakerPocetniInsert.izvedi();
 //============= AUTORIZACIJA JFRAME=======================       
-  new Autorizacija().setVisible(true);
+ // new Autorizacija().setVisible(true);
   
  //===========UNOS ADMINA I OPERATERA ============= 
     //FakerPocetniInsert.unosAdminOperatera();
- 
+    
+ //=======TEST ZA PRIJEVOZ =======================
+ // KAKO HANDLATI EXCEPTION ZA BIG DECIMAL
+        Prijevoz p = new Prijevoz();
+        //p.setPolaziste("o");
+      //  p.setOdrediste("o");
+   p.setBrojPutnika(Integer.parseInt("d"));
+ //  p.setCijena(new BigDecimal("abcd"));
+//        p.setUkupnoKm(BigDecimal.ONE);
+        
+        ObradaPrijevoz op = new ObradaPrijevoz();
+        op.setEntitet(p);
+        try{
+        op.create();
+        }catch(MyException ex){
+            System.out.println(ex.getPoruka());
+        }
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
 //      vozilo.setBojaVozila("1");

@@ -29,5 +29,10 @@ public class PomocnaMetoda {
            if(broj){
                throw new MyException(poruka);
            }
-  }   
+  }
+       public static void kontrolaNull(Object o, String poruka)throws MyException{
+         if(o==null){
+           throw new MyException(poruka);
+           }
+       }
 }
