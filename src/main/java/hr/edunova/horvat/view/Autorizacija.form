@@ -99,6 +99,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswLozinka">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="j"/>
+      </Properties>
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pswLozinkaKeyReleased"/>
       </Events>

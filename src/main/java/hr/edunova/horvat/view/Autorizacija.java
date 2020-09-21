@@ -58,6 +58,7 @@ public class Autorizacija extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Lozinka");
 
+        pswLozinka.setText("j");
         pswLozinka.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pswLozinkaKeyReleased(evt);

@@ -73,13 +73,6 @@ public class ObradaPrijevoz extends Obrada<Prijevoz>{
             throw new MyException("Ne moze biti manje od jednog putnika");
         }
         
-        // NIJE DOBRO
-//       try{
-//          entitet.getBrojPutnika().toString();
-//          
-//       }catch(NumberFormatException e){
-//         throw new MyException("Krivi unos");
-//       }
-     }    
+    }    
     
 }

@@ -13,6 +13,8 @@ import hr.edunova.horvat.model.Operater;
  */
 public class Aplikacija {
     
+    public static final String NAZIV_APLIKACIJE = "Prijevoz putnika";
+    
     public static Operater operater;
     
     public static boolean isAdmin(){

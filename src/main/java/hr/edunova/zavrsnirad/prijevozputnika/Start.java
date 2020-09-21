@@ -29,36 +29,35 @@ public class Start {
           /*
         Pregledati ponovno tecaj od nez koje minute!!
         Vozac: preostaje kontrola za datum i vozilo;   
-        Vozilo preostaje kontrola za 
+        Kontrola za Proizvodjac 
         Dodati u Vozac/Vozilo String ne moze biti broj
         Duzina veca od 50 znakova....
         */
   
+//============= AUTORIZACIJA JFRAME=======================       
+          new Autorizacija().setVisible(true);
         
 //=============UNOS PODATAKA SA FAKER=============         
   //       FakerPocetniInsert.izvedi();
-//============= AUTORIZACIJA JFRAME=======================       
- // new Autorizacija().setVisible(true);
-  
+
  //===========UNOS ADMINA I OPERATERA ============= 
     //FakerPocetniInsert.unosAdminOperatera();
     
  //=======TEST ZA PRIJEVOZ =======================
  // KAKO HANDLATI EXCEPTION ZA BIG DECIMAL
-        Prijevoz p = new Prijevoz();
-        //p.setPolaziste("o");
-      //  p.setOdrediste("o");
-   p.setBrojPutnika(Integer.parseInt("d"));
+//        Prijevoz p = new Prijevoz();
+//        p.setPolaziste("o");
+//        p.setOdrediste("o"); 
  //  p.setCijena(new BigDecimal("abcd"));
 //        p.setUkupnoKm(BigDecimal.ONE);
         
-        ObradaPrijevoz op = new ObradaPrijevoz();
-        op.setEntitet(p);
-        try{
-        op.create();
-        }catch(MyException ex){
-            System.out.println(ex.getPoruka());
-        }
+//        ObradaPrijevoz op = new ObradaPrijevoz();
+//        op.setEntitet(p);
+//        try{
+//        op.create();
+//        }catch(MyException ex){
+//            System.out.println(ex.getPoruka());
+//        }
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
 //      vozilo.setBojaVozila("1");
