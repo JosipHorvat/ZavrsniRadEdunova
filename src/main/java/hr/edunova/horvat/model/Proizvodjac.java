@@ -54,5 +54,11 @@ public class Proizvodjac extends Entitet{
     public void setWebStranica(String webStranica) {
         this.webStranica = webStranica;
     }
+
+    @Override
+    public String toString() {
+        return getNazivTvrtke();
+    }
    
+    
 }

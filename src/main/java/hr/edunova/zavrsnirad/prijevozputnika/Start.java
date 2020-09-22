@@ -35,13 +35,13 @@ public class Start {
         */
   
 //============= AUTORIZACIJA JFRAME=======================       
-         // new Autorizacija().setVisible(true);
+          new Autorizacija().setVisible(true);
         
 //=============UNOS PODATAKA SA FAKER=============         
-      FakerPocetniInsert.izvedi();
+   //   FakerPocetniInsert.izvedi();
 
  //===========UNOS ADMINA I OPERATERA ============= 
-   FakerPocetniInsert.unosAdminOperatera();
+  // FakerPocetniInsert.unosAdminOperatera();
     
  //=======TEST ZA PRIJEVOZ =======================
  // KAKO HANDLATI EXCEPTION ZA BIG DECIMAL

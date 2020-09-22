@@ -6,21 +6,24 @@
 package hr.edunova.horvat.view;
 
 import hr.edunova.horvat.controller.ObradaProizvodjac;
+import hr.edunova.horvat.model.Proizvodjac;
+import javax.swing.DefaultListModel;
 
 /**
- *
+ * 
  * @author Josip
  */
 public class Proizvodjaci extends javax.swing.JFrame {
-    
-    private ObradaProizvodjac obrada;
 
+    private ObradaProizvodjac obrada;
     /**
      * Creates new form Proizvodjaci
      */
     public Proizvodjaci() {
         initComponents();
         obrada = new ObradaProizvodjac();
+        setTitle(Aplikacija.operater.getImeIPrezime());
+        ucitajPodatke();
     }
 
     /**
@@ -32,22 +35,46 @@ public class Proizvodjaci extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstPodaci = new javax.swing.JList<>();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+
+        jScrollPane1.setViewportView(lstPodaci);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 430, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<Proizvodjac> lstPodaci;
     // End of variables declaration//GEN-END:variables
+
+    private void ucitajPodatke() {
+
+        DefaultListModel<Proizvodjac> m = new DefaultListModel<>();
+        obrada.getPodaci().forEach(s-> m.addElement(s));
+        // Za svaki s, model dodaj mi element tog s iz obrada(Obrada proizvodjac)
+        // Ovaj forEach  je  one liner koji zamjenjuje petlje 
+        
+        lstPodaci.setModel(m);
+        // ispravak greske na m: Design-> lstPodaci->code-> TypeParametars postaviti u proizvodjac
+    }
 }
