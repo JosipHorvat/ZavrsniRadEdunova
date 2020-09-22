@@ -30,12 +30,14 @@ public class ObradaProizvodjac extends Obrada<Proizvodjac>{
 
     @Override
     protected void kontrolaUpdate() throws MyException {
-
+    
     }
 
     @Override
     protected void kontrolaDelete() throws MyException {
-
+            if(entitet.getVozila().size()>0){
+        throw new MyException("Proizvodjac se ne moze obrisati jer ima jedno ili vise vozila.");
+    }
     }
    
     private void kontrolaNazivTvrtke() throws MyException{
@@ -55,7 +57,7 @@ public class ObradaProizvodjac extends Obrada<Proizvodjac>{
        private void kontrolaGrad() throws MyException{
         PomocnaMetoda.neMozeBitiBroj(entitet.getGrad(),"Ime Drzave ne moze biti broj");
      if(entitet.getGrad()== null || entitet.getGrad().trim().isEmpty()){
-         throw new MyException("Ime drzave se mora unijeti");
+         throw new MyException("Ime grada se mora unijeti");
      }   
      }
 }

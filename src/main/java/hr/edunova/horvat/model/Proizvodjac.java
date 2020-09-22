@@ -5,8 +5,11 @@
  */
 package hr.edunova.horvat.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +25,17 @@ public class Proizvodjac extends Entitet{
     private String drzava;
     private String grad;
     private String webStranica;
+
+    public List<Vozilo> getVozila() {
+        return vozila;
+    }
+
+    public void setVozila(List<Vozilo> vozila) {
+        this.vozila = vozila;
+    }
+    
+    @OneToMany(mappedBy = "proizvodjac")
+    private List<Vozilo> vozila = new ArrayList<>();
 
     public String getNazivTvrtke() {
         return nazivTvrtke;
