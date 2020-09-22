@@ -17,51 +17,42 @@ import javax.persistence.Table;
 @Table(name = "proizvodjac")
 public class Proizvodjac extends Entitet{
     
-    private String naziv;
-    private String model;
-    private Integer brojVrata;
-    private Integer kW;
-    private Date datumProizvodnje;
+   
+    private String nazivTvrtke;
+    private String drzava;
+    private String grad;
+    private String webStranica;
 
-    public String getNaziv() {
-        return naziv;
+    public String getNazivTvrtke() {
+        return nazivTvrtke;
     }
 
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
+    public void setNazivTvrtke(String nazivTvrtke) {
+        this.nazivTvrtke = nazivTvrtke;
     }
 
-    public String getModel() {
-        return model;
+    public String getDrzava() {
+        return drzava;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setDrzava(String drzava) {
+        this.drzava = drzava;
     }
 
-    public Integer getBrojVrata() {
-        return brojVrata;
+    public String getGrad() {
+        return grad;
     }
 
-    public void setBrojVrata(Integer brojVrata) {
-        this.brojVrata = brojVrata;
+    public void setGrad(String grad) {
+        this.grad = grad;
     }
 
-    public Integer getkW() {
-        return kW;
+    public String getWebStranica() {
+        return webStranica;
     }
 
-    public void setkW(Integer kW) {
-        this.kW = kW;
+    public void setWebStranica(String webStranica) {
+        this.webStranica = webStranica;
     }
-
-    public Date getDatumProizvodnje() {
-        return datumProizvodnje;
-    }
-
-    public void setDatumProizvodnje(Date datumProizvodnje) {
-        this.datumProizvodnje = datumProizvodnje;
-    }
-    
-    
+   
 }

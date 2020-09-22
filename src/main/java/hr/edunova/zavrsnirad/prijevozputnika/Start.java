@@ -26,22 +26,22 @@ public class Start {
 
     public static void main(String[] args) {
         
-          /*
-        Pregledati ponovno tecaj od nez koje minute!!
+           /*
+        
         Vozac: preostaje kontrola za datum i vozilo;   
-        Kontrola za Proizvodjac 
-        Dodati u Vozac/Vozilo String ne moze biti broj
-        Duzina veca od 50 znakova....
+        Proizvodjac: kontrola za webStranicu;
+        Vozilo: kontrola za datum;
+       
         */
   
 //============= AUTORIZACIJA JFRAME=======================       
-          new Autorizacija().setVisible(true);
+         // new Autorizacija().setVisible(true);
         
 //=============UNOS PODATAKA SA FAKER=============         
-  //       FakerPocetniInsert.izvedi();
+      FakerPocetniInsert.izvedi();
 
  //===========UNOS ADMINA I OPERATERA ============= 
-    //FakerPocetniInsert.unosAdminOperatera();
+   FakerPocetniInsert.unosAdminOperatera();
     
  //=======TEST ZA PRIJEVOZ =======================
  // KAKO HANDLATI EXCEPTION ZA BIG DECIMAL
@@ -60,10 +60,11 @@ public class Start {
 //        }
 //===========TEST ZA VOZILO========================     
 //      Vozilo vozilo = new Vozilo();
-//      vozilo.setBojaVozila("1");
+//      vozilo.setNaziv("f");
+//      vozilo.setModel("1");
 //      vozilo.setUkupnoPredjenihKm(BigDecimal.ONE);
 //      vozilo.setRegistracijskaOznaka("OS-705-IB");
-//      vozilo.setOsiguran(Boolean.TRUE);
+//      vozilo.setOsigurano(Boolean.TRUE);
 //     // vozilo.setProizvodjac(proizvodjac);
 //      
 //      ObradaVozilo obradaVozilo = new ObradaVozilo();

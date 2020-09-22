@@ -6,6 +6,7 @@
 package hr.edunova.horvat.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,10 +19,12 @@ import javax.persistence.Table;
 @Table(name = "vozilo")
 public class Vozilo extends Entitet{
 
+    private String naziv;
+    private String model;
     private String registracijskaOznaka;
-    private Boolean osiguran;
-    private String bojaVozila;
+    private Boolean osigurano;
     private BigDecimal ukupnoPredjenihKm;
+    private Date datumProizvodnje;
     
     @ManyToOne
     private Proizvodjac proizvodjac;
@@ -33,16 +36,22 @@ public class Vozilo extends Entitet{
     public void setProizvodjac(Proizvodjac proizvodjac) {
         this.proizvodjac = proizvodjac;
     }
-    
 
-    public BigDecimal getUkupnoPredjenihKm() {
-        return ukupnoPredjenihKm;
+    public String getNaziv() {
+        return naziv;
     }
 
-    public void setUkupnoPredjenihKm(BigDecimal ukupnoPredjenihKm) {
-        this.ukupnoPredjenihKm = ukupnoPredjenihKm;
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
     }
-   
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
 
     public String getRegistracijskaOznaka() {
         return registracijskaOznaka;
@@ -52,23 +61,29 @@ public class Vozilo extends Entitet{
         this.registracijskaOznaka = registracijskaOznaka;
     }
 
-    public Boolean getOsiguran() {
-        return osiguran;
+    public Boolean getOsigurano() {
+        return osigurano;
     }
 
-    public void setOsiguran(Boolean osiguran) {
-        this.osiguran = osiguran;
+    public void setOsigurano(Boolean osigurano) {
+        this.osigurano = osigurano;
     }
 
-    public String getBojaVozila() {
-        return bojaVozila;
+    public BigDecimal getUkupnoPredjenihKm() {
+        return ukupnoPredjenihKm;
     }
 
-    public void setBojaVozila(String bojaVozila) {
-        this.bojaVozila = bojaVozila;
+    public void setUkupnoPredjenihKm(BigDecimal ukupnoPredjenihKm) {
+        this.ukupnoPredjenihKm = ukupnoPredjenihKm;
     }
 
-  
+    public Date getDatumProizvodnje() {
+        return datumProizvodnje;
+    }
+
+    public void setDatumProizvodnje(Date datumProizvodnje) {
+        this.datumProizvodnje = datumProizvodnje;
+    }
     
-    
+
 }

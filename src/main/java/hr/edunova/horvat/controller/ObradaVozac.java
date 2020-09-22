@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * @author Josip
  */
+ // U obradi vozac je potrebna obrada za Date i mozda za ??Vozilo?? 
 public class ObradaVozac extends ObradaOsoba<Vozac>{
     
       
@@ -22,7 +23,7 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
     @Override
     protected void kontrolaCreate() throws MyException {
         super.kontrolaCreate();
-        kontrolaVerificiran();
+        
     }
 
     @Override
@@ -34,15 +35,7 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
     protected void kontrolaDelete() throws MyException {
 
     }
- // U obradi vozac je potrebna obrada za Date i mozda za ??Vozilo??   
-// za ovo upitati 
-    private void kontrolaVerificiran() throws MyException{
-        if(entitet.getVerificiran() == null){
-            throw new MyException("Ne zna se je li vozac verificiran");
-        }
-        
-    }
-   
+  
  
-   
+ 
 }

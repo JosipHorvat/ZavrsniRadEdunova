@@ -7,6 +7,7 @@ package hr.edunova.horvat.controller;
 
 import hr.edunova.horvat.model.Proizvodjac;
 import hr.edunova.horvat.utility.MyException;
+import hr.edunova.horvat.utility.PomocnaMetoda;
 import java.util.List;
 
 /**
@@ -16,22 +17,45 @@ public class ObradaProizvodjac extends Obrada<Proizvodjac>{
 
     @Override
     public List<Proizvodjac> getPodaci() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return session.createQuery("from Proizvodjac").list();
     }
 
     @Override
     protected void kontrolaCreate() throws MyException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        kontrolaNazivTvrtke();
+        kontrolaDrzava();
+        kontrolaGrad();
+        // mozda kontrola webstranice
     }
 
     @Override
     protected void kontrolaUpdate() throws MyException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     protected void kontrolaDelete() throws MyException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    }
+   
+    private void kontrolaNazivTvrtke() throws MyException{
+         PomocnaMetoda.neMozeBitiBroj(entitet.getNazivTvrtke(),"Naziv ne moze biti broj");
+     if(entitet.getNazivTvrtke()== null || entitet.getNazivTvrtke().trim().isEmpty()){
+         throw new MyException("Naziv tvrtke se mora unijeti");
+     }   
     }
     
+     private void kontrolaDrzava() throws MyException{
+        PomocnaMetoda.neMozeBitiBroj(entitet.getDrzava(),"Ime Drzave ne moze biti broj");
+     if(entitet.getDrzava()== null || entitet.getDrzava().trim().isEmpty()){
+         throw new MyException("Ime drzave se mora unijeti");
+     }   
+     }
+     
+       private void kontrolaGrad() throws MyException{
+        PomocnaMetoda.neMozeBitiBroj(entitet.getGrad(),"Ime Drzave ne moze biti broj");
+     if(entitet.getGrad()== null || entitet.getGrad().trim().isEmpty()){
+         throw new MyException("Ime drzave se mora unijeti");
+     }   
+     }
 }

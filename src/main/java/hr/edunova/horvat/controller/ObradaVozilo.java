@@ -16,7 +16,8 @@ import java.util.List;
  * @author Josip
  */
 public class ObradaVozilo extends Obrada<Vozilo>{
-    
+
+        
      @Override
     public List<Vozilo> getPodaci() {
          return session.createQuery("from Vozilo").list();
@@ -24,10 +25,11 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 
     @Override
     protected void kontrolaCreate() throws MyException {
-        kontrolaBojaVozila();
+        kontrolaNaziva();
+        kontrolaModel();
         kontrolaRegistracijskaOznaka();
         kontrolaUkupnoPredjenihKm();
-        kontrolaOsiguran();
+      kontrolaDatum();// DATUM SE NE KONTROLIRA, METODA JE PRAZNA!!!
     }
 
     @Override
@@ -43,42 +45,45 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 //OVDJE SE VRATITI I POGLEDAT DA BOLJE UPISEM BIG DECIMAL 
 // I pregledati ostale kontrole ako nesto moze bolje
 
-   private void kontrolaBojaVozila() throws MyException{
-       PomocnaMetoda.neMozeBitiBroj(entitet.getBojaVozila(),"Nepoznata boja");
-       if(entitet.getBojaVozila()== null || entitet.getBojaVozila().trim().isEmpty()){
-           throw new MyException("Boja vozila mora biti unesena");
+   private void kontrolaNaziva() throws MyException{
+       PomocnaMetoda.neMozeBitiBroj(entitet.getNaziv(),"Naziv ne moze biti broj");
+       if(entitet.getNaziv()== null || entitet.getNaziv().trim().isEmpty()){
+           throw new MyException("Naziv vozila mora biti unesen");
        }
-       if(entitet.getBojaVozila().length()>50){
-           throw new MyException("Boja ne moze biti duza od 50 znakova ");
-       }   
-       
-      
+       if(entitet.getNaziv().length()>50){
+           throw new MyException("Naziv ne moze biti duzi od 50 znakova ");
+       }
    }
+   
+   private void kontrolaModel() throws MyException{
+       if(entitet.getModel()== null || entitet.getModel().trim().isEmpty()){
+           throw new MyException("Naziv vozila mora biti unesen");
+       }
+       if(entitet.getModel().length()>50){
+           throw new MyException("Naziv ne moze biti duzi od 50 znakova ");
+       } 
+   }
+ 
    private void kontrolaRegistracijskaOznaka() throws MyException{
        if(entitet.getRegistracijskaOznaka()== null || entitet.getRegistracijskaOznaka().trim().isEmpty()){
            throw new MyException("Registracijska oznaka mora biti unesena");
        }
    }
-   private void kontrolaUkupnoPredjenihKm() throws MyException{
+   
+   private void kontrolaDatum(){
+       // moram vidjeti kako izkontrolirati datum
+   }
+    
+  private void kontrolaUkupnoPredjenihKm() throws MyException{
        kontrolaNull(entitet.getUkupnoPredjenihKm(), "Mora se znati ukupan broj predjenih KM vozila");
        if(entitet.getUkupnoPredjenihKm().compareTo(BigDecimal.ZERO)<0){
            throw new MyException("Ukupan broj predjenih kilometara ne moze biti manji od 0");
        }
-   }
-   private void kontrolaOsiguran() throws MyException{
-       if(entitet.getOsiguran()== null){
-           throw new MyException("Mora se znati je li vozilo osigurano");
-       }
-   }
-   
+   } 
    private void kontrolaNull(Object o, String poruka)throws MyException{
          if(o==null){
            throw new MyException(poruka);
            }
        }
-   
-   
-
-
-   
+    
 }

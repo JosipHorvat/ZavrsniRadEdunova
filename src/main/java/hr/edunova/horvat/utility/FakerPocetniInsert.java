@@ -19,15 +19,14 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class FakerPocetniInsert {
     
-    public static void izvedi(){
+     public static void izvedi(){
         
         Session session = HibernateUtil.getSessionFactory().openSession();
-                     
+  
         
-        
-        Proizvodjac opel = createProizvodjac("Opel", "Corsa", new Date(), 5, 50);
-        Proizvodjac seat = createProizvodjac("Seat", "Ibiza", new Date(), 5, 45);
-        Proizvodjac volkswagen = createProizvodjac("Volkswagen", "Golf 2", new Date(), Integer.MIN_VALUE, Integer.MAX_VALUE);
+        Proizvodjac opel = createProizvodjac("Opel", "Njemacka", "Russelsheim" ,"https://www.opel-infos.de/");
+        Proizvodjac seat = createProizvodjac("Seat", "Spanjolska", "Martorell" ,"https://www.seat.com/");
+        Proizvodjac volkswagen = createProizvodjac("Volkswagen","Njemacka" , "Wolfsburg" ,"https://www.vw.com/" );
         
         session.beginTransaction();
         session.save(opel);
@@ -56,15 +55,17 @@ public class FakerPocetniInsert {
         vozac.setDatumRodjenja(faker.date().birthday(10, 100));
         //vozac.setVozilo();
         session.save(vozac);
-        
+             
     }
     for(int i =0; i<10; i++){
         vozilo = new Vozilo();
-        vozilo.setBojaVozila(faker.color().name());
-        vozilo.setOsiguran(PomocnaMetoda.randomBoolean());
+        vozilo.setNaziv(faker.ancient().god());
+        vozilo.setModel(faker.animal().name());
         vozilo.setProizvodjac(volkswagen);
         vozilo.setRegistracijskaOznaka(faker.leagueOfLegends().rank());
+        vozilo.setOsigurano(PomocnaMetoda.randomBoolean());
         vozilo.setUkupnoPredjenihKm(new BigDecimal(i*10));
+        vozilo.setDatumProizvodnje(faker.date().birthday());
         session.save(vozilo);
     }
     for(int i = 0; i<10; i++){
@@ -87,16 +88,18 @@ public class FakerPocetniInsert {
    
     
  
+    // mjenjam fakera
     
     
-    
-    private static Proizvodjac createProizvodjac(String naziv, String model, Date datumProizvodnje, Integer brojVrata, Integer kW ){
+    private static Proizvodjac createProizvodjac(String nazivTvrtke, String drzava,  String grad, String webStranica ){
         Proizvodjac proizvodjac = new Proizvodjac();
-        proizvodjac.setNaziv(naziv);
-        proizvodjac.setModel(model);
-        proizvodjac.setDatumProizvodnje(datumProizvodnje);
-        proizvodjac.setBrojVrata(brojVrata);
-        proizvodjac.setkW(kW);
+        proizvodjac.setNazivTvrtke(nazivTvrtke);
+        proizvodjac.setDrzava(drzava);
+        proizvodjac.setGrad(grad);
+        proizvodjac.setWebStranica(webStranica);
+        
+        
+       
         
         return proizvodjac;
     }
