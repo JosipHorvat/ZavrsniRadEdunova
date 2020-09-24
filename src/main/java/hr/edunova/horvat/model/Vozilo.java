@@ -84,6 +84,11 @@ public class Vozilo extends Entitet{
     public void setDatumProizvodnje(Date datumProizvodnje) {
         this.datumProizvodnje = datumProizvodnje;
     }
+
+    @Override
+    public String toString() {
+        return getNaziv() + " " + getModel();
+    }
     
 
 }

@@ -98,6 +98,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jSeparator1);
 
         jmiVozila.setText("Vozila");
+        jmiVozila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVozilaActionPerformed(evt);
+            }
+        });
         jmnIzbornik.add(jmiVozila);
         jmnIzbornik.add(jSeparator2);
 
@@ -147,6 +152,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void jmiProizvodjaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProizvodjaciActionPerformed
        new Proizvodjaci().setVisible(true);
     }//GEN-LAST:event_jmiProizvodjaciActionPerformed
+
+    private void jmiVozilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVozilaActionPerformed
+        new Vozila().setVisible(true);
+    }//GEN-LAST:event_jmiVozilaActionPerformed
 
   
 

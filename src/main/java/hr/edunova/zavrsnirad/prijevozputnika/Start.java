@@ -28,9 +28,17 @@ public class Start {
         
            /*
         
-        Vozac: preostaje kontrola za datum i vozilo;   
+        Svi view - Button za ciscenje 
+        Trazilica u view vozila
+        icon za trazilicu 
+        kontrola za sve modele u update 
+        ucitaj sliku u proizvodjac 
         Proizvodjac: kontrola za webStranicu;
-        Vozilo: kontrola za datum;
+        Smije li se vozilo obrisati ako ima vozaca???
+        Nova tablica zaduzeno vozilo 
+        
+        
+        
        
         */
   
