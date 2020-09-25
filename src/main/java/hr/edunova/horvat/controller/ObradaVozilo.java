@@ -29,17 +29,22 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         kontrolaModel();
         kontrolaRegistracijskaOznaka();
         kontrolaUkupnoPredjenihKm();
-      kontrolaDatum();// DATUM SE NE KONTROLIRA, METODA JE PRAZNA!!!
+        kontrolaDatum();
+       
     }
 
     @Override
     protected void kontrolaUpdate() throws MyException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        kontrolaNaziva();
+        kontrolaModel();
+        kontrolaRegistracijskaOznaka();
+        kontrolaUkupnoPredjenihKm();
+       
     }
 
     @Override
     protected void kontrolaDelete() throws MyException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
 //OVDJE SE VRATITI I POGLEDAT DA BOLJE UPISEM BIG DECIMAL 
@@ -57,7 +62,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
    
    private void kontrolaModel() throws MyException{
        if(entitet.getModel()== null || entitet.getModel().trim().isEmpty()){
-           throw new MyException("Naziv vozila mora biti unesen");
+           throw new MyException("Naziv modela mora biti unesen");
        }
        if(entitet.getModel().length()>50){
            throw new MyException("Naziv ne moze biti duzi od 50 znakova ");
@@ -70,9 +75,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
        }
    }
    
-   private void kontrolaDatum(){
-       // moram vidjeti kako izkontrolirati datum
-   }
+ 
     
   private void kontrolaUkupnoPredjenihKm() throws MyException{
        kontrolaNull(entitet.getUkupnoPredjenihKm(), "Mora se znati ukupan broj predjenih KM vozila");
@@ -80,6 +83,10 @@ public class ObradaVozilo extends Obrada<Vozilo>{
            throw new MyException("Ukupan broj predjenih kilometara ne moze biti manji od 0");
        }
    } 
+  private void kontrolaDatum()throws MyException{
+      kontrolaNull(entitet.getDatumProizvodnje(), "Datum proizvodnje se mora unijeti");
+  }
+  
    private void kontrolaNull(Object o, String poruka)throws MyException{
          if(o==null){
            throw new MyException(poruka);

@@ -12,6 +12,7 @@ import hr.edunova.horvat.utility.MyException;
 import java.awt.Component;
 import java.awt.Image;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Locale;
@@ -291,15 +292,13 @@ public class Vozila extends javax.swing.JFrame {
         
         postaviVrijednostiUEntitet();
         
-       
-       
-        try{
-        obrada.create();
-        ucitajPodatke();
-        ocistiPolja();
-        }catch(MyException e){
-           lblPoruka.setText(e.getPoruka());
-        }
+      try {
+            obrada.create();
+            ucitajPodatke();
+            ocistiPolja();
+        } catch (MyException ex) {
+           lblPoruka.setText(ex.getPoruka());
+        }           
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnIzmijeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmijeniActionPerformed
@@ -404,8 +403,9 @@ public class Vozila extends javax.swing.JFrame {
             if(c instanceof JCheckBox){
                 ((JCheckBox) c).setSelected(false);
             }
-           
         }
+           dpDatumProizvodnje.setDate(LocalDate.now());
+        
 //        txtNaziv.setText("");
 //        txtModel.setText("");
 //        txtRegistracija.setText("");
@@ -429,11 +429,13 @@ public class Vozila extends javax.swing.JFrame {
         }catch(Exception e){
             entitet.setUkupnoPredjenihKm(BigDecimal.ZERO);
         }
-        
+        try{
         entitet.setDatumProizvodnje(Date.from(dpDatumProizvodnje.getDate().atStartOfDay()
         .atZone(ZoneId.systemDefault())
         .toInstant()));
-       
+        }catch(Exception e){
+            entitet.setDatumProizvodnje(null);
+        }
        obrada.setEntitet(entitet);
         
     }

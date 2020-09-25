@@ -30,7 +30,9 @@ public class ObradaProizvodjac extends Obrada<Proizvodjac>{
 
     @Override
     protected void kontrolaUpdate() throws MyException {
-    
+        kontrolaNazivTvrtke();
+        kontrolaDrzava();
+        kontrolaGrad();
     }
 
     @Override
