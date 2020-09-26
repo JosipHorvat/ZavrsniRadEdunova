@@ -33,7 +33,9 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
 
     @Override
     protected void kontrolaDelete() throws MyException {
-
+          if(entitet.getZaduzenaVozila().size()>0){
+            throw new MyException("Vozac se ne moze obrisati jer nije uklonjeno razduzeno/zaduzeno vozilo");
+        }
     }
   
  

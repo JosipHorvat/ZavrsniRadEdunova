@@ -50,6 +50,7 @@ POTREBNO JE RUCNO KREIRATI BAZU
         <mapping class="hr.edunova.horvat.model.Prijevoz" />
         <mapping class="hr.edunova.horvat.model.Proizvodjac" />
         <mapping class="hr.edunova.horvat.model.Operater" />
+        <mapping class="hr.edunova.horvat.model.ZaduzenoVozilo" />
         
 
         

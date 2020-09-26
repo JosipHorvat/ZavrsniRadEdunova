@@ -40,6 +40,9 @@ public class ObradaProizvodjac extends Obrada<Proizvodjac>{
             if(entitet.getVozila().size()>0){
         throw new MyException("Proizvodjac se ne moze obrisati jer ima jedno ili vise vozila.");
     }
+//               if(entitet.getVozila().size()>0){
+//        throw new MyException("Proizvodjac se ne moze obrisati jer ima jedno ili vise vozila.");
+//    }
     }
    
     private void kontrolaNazivTvrtke() throws MyException{

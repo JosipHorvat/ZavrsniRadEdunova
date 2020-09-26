@@ -53,7 +53,9 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 
     @Override
     protected void kontrolaDelete() throws MyException {
-
+          if(entitet.getZaduzenaVozila().size()>0){
+            throw new MyException("Vozilo se ne može obrisati jer nije rijesena dokumentacija zaduzenog/razduzenog vozila");
+        }
     }
 
 //OVDJE SE VRATITI I POGLEDAT DA BOLJE UPISEM BIG DECIMAL 

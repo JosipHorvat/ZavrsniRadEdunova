@@ -6,9 +6,12 @@
 package hr.edunova.horvat.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +28,17 @@ public class Vozilo extends Entitet{
     private Boolean osigurano;
     private BigDecimal ukupnoPredjenihKm;
     private Date datumProizvodnje;
+    
+       @OneToMany(mappedBy = "vozilo")
+    private List<ZaduzenoVozilo> zaduzenaVozila = new ArrayList<>();
+
+    public List<ZaduzenoVozilo> getZaduzenaVozila() {
+        return zaduzenaVozila;
+    }
+
+    public void setZaduzenaVozila(List<ZaduzenoVozilo> zaduzenaVozila) {
+        this.zaduzenaVozila = zaduzenaVozila;
+    }
     
     @ManyToOne
     private Proizvodjac proizvodjac;
