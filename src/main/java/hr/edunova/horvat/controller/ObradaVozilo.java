@@ -22,6 +22,15 @@ public class ObradaVozilo extends Obrada<Vozilo>{
     public List<Vozilo> getPodaci() {
          return session.createQuery("from Vozilo").list();
     }
+    
+      public List<Vozilo> getPodaci(String uvjet) {
+          return session.createQuery("from Vozilo v "
+              + " where concat(v.naziv, ' ', v.model, ' ', v.registracijskaOznaka) "
+              + " like :uvjet ")
+              .setParameter("uvjet", "%"+uvjet+"%")
+              .setMaxResults(20)
+              .list();
+    }
 
     @Override
     protected void kontrolaCreate() throws MyException {
