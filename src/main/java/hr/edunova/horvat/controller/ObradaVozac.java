@@ -28,7 +28,7 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
 
     @Override
     protected void kontrolaUpdate() throws MyException {
-
+        super.kontrolaUpdate();
     }
 
     @Override

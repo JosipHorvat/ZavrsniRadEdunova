@@ -49,4 +49,11 @@ public class Vozac extends Osoba{
     public void setDatumRodjenja(Date datumRodjenja) {
         this.datumRodjenja = datumRodjenja;
     }
+
+    @Override
+    public String toString() {
+        return this.getImeIPrezime();
+    }
+    
+    
 }
