@@ -257,6 +257,11 @@ public class Vozila extends javax.swing.JFrame {
         });
 
         txtUvjet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUvjet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUvjetActionPerformed(evt);
+            }
+        });
         txtUvjet.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUvjetKeyReleased(evt);
@@ -442,6 +447,10 @@ public class Vozila extends javax.swing.JFrame {
            ucitajPodatke();
        }
     }//GEN-LAST:event_txtUvjetKeyReleased
+
+    private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUvjetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;

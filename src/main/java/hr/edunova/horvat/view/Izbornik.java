@@ -44,6 +44,8 @@ public class Izbornik extends javax.swing.JFrame {
         jmiVozila = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmiVozaci = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jmiZaduzenaVozila = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jmiPrijevoz = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
@@ -113,6 +115,15 @@ public class Izbornik extends javax.swing.JFrame {
             }
         });
         jmnIzbornik.add(jmiVozaci);
+        jmnIzbornik.add(jSeparator6);
+
+        jmiZaduzenaVozila.setText("Zaduzena vozila");
+        jmiZaduzenaVozila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiZaduzenaVozilaActionPerformed(evt);
+            }
+        });
+        jmnIzbornik.add(jmiZaduzenaVozila);
         jmnIzbornik.add(jSeparator3);
 
         jmiPrijevoz.setText("Prijevoz");
@@ -166,6 +177,10 @@ public class Izbornik extends javax.swing.JFrame {
        new Vozaci().setVisible(true);
     }//GEN-LAST:event_jmiVozaciActionPerformed
 
+    private void jmiZaduzenaVozilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiZaduzenaVozilaActionPerformed
+       new ZaduzenaVozila().setVisible(true);
+    }//GEN-LAST:event_jmiZaduzenaVozilaActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -175,12 +190,14 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JMenuItem jmiIzlaz;
     private javax.swing.JMenuItem jmiOperateri;
     private javax.swing.JMenuItem jmiPrijevoz;
     private javax.swing.JMenuItem jmiProizvodjaci;
     private javax.swing.JMenuItem jmiVozaci;
     private javax.swing.JMenuItem jmiVozila;
+    private javax.swing.JMenuItem jmiZaduzenaVozila;
     private javax.swing.JMenu jmnIzbornik;
     private javax.swing.JPanel pnlKalendar;
     private javax.swing.JPanel pnlPozadina;

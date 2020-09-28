@@ -6,9 +6,8 @@
 package hr.edunova.horvat.view;
 
 import com.github.lgooddatepicker.components.DatePicker;
-import hr.edunova.horvat.controller.ObradaProizvodjac;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import hr.edunova.horvat.controller.ObradaVozac;
-import hr.edunova.horvat.model.Proizvodjac;
 import hr.edunova.horvat.model.Vozac;
 import hr.edunova.horvat.utility.MyException;
 import java.awt.Component;
@@ -16,6 +15,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
@@ -45,9 +45,18 @@ public class Vozaci extends javax.swing.JFrame {
         setTitle(Aplikacija.operater.getImeIPrezime()+ " - Vozaci ");
         ucitajPodatke();
         dodajSliku();
+        
+       
+        DatePickerSettings datePickerSettings = new DatePickerSettings( new Locale("hr", "HR", "HR"));
+        datePickerSettings.setFormatForDatesCommonEra("dd.MM.yyyy");
+        //datePickerSettings.setLocale(Locale.forLanguageTag("hr-HR-x-1variant-HR"));
+        Locale.setDefault( new Locale("hr"));
+        dpDatumRodjenja.setLocale(new Locale("hr"));
+        dpDatumRodjenja.setSettings(datePickerSettings);
+       
     }
     
-     
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,6 +82,7 @@ public class Vozaci extends javax.swing.JFrame {
         dpDatumRodjenja = new com.github.lgooddatepicker.components.DatePicker();
         jLabel5 = new javax.swing.JLabel();
         chbVerificiran = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
         btnIzmijeni = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
@@ -122,6 +132,8 @@ public class Vozaci extends javax.swing.JFrame {
         chbVerificiran.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         chbVerificiran.setText("Osiguran");
 
+        jLabel6.setText("Slika Vozaca");
+
         javax.swing.GroupLayout pnlPodaciLayout = new javax.swing.GroupLayout(pnlPodaci);
         pnlPodaci.setLayout(pnlPodaciLayout);
         pnlPodaciLayout.setHorizontalGroup(
@@ -141,16 +153,20 @@ public class Vozaci extends javax.swing.JFrame {
                                         .addComponent(dpDatumRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(90, 90, 90)))
                                 .addComponent(chbVerificiran))
-                            .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtPrezime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                                    .addComponent(txtIme, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addGroup(pnlPodaciLayout.createSequentialGroup()
+                                    .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtPrezime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                                            .addComponent(txtIme, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(49, Short.MAX_VALUE))))
         );
         pnlPodaciLayout.setVerticalGroup(
@@ -158,11 +174,14 @@ public class Vozaci extends javax.swing.JFrame {
             .addGroup(pnlPodaciLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlPodaciLayout.createSequentialGroup()
+                        .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -203,6 +222,11 @@ public class Vozaci extends javax.swing.JFrame {
         });
 
         txtUvjet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUvjet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUvjetActionPerformed(evt);
+            }
+        });
         txtUvjet.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUvjetKeyReleased(evt);
@@ -361,6 +385,10 @@ public class Vozaci extends javax.swing.JFrame {
       ocistiPolja();
     }//GEN-LAST:event_btnOcistiActionPerformed
 
+    private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUvjetActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnIzmijeni;
@@ -374,6 +402,7 @@ public class Vozaci extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPoruka;
     private javax.swing.JList<Vozac> lstPodaci;
@@ -388,7 +417,7 @@ public class Vozaci extends javax.swing.JFrame {
     private void ucitajPodatke() {
 
         DefaultListModel<Vozac> m = new DefaultListModel<>();
-        obrada.getPodaci().forEach(s-> m.addElement(s));
+        obrada.getPodaci(txtUvjet.getText()).forEach(s-> m.addElement(s));
         // Za svaki s, model dodaj mi element tog s iz obrada(Obrada proizvodjac)
         // Ovaj forEach  je  one liner koji zamjenjuje petlje 
         

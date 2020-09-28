@@ -58,5 +58,12 @@ public class ZaduzenoVozilo extends Entitet{
     public void setVozac(Vozac vozac) {
         this.vozac = vozac;
     }
-      
+
+    @Override
+    public String toString() {
+        return getVozac().getImeIPrezime() + " - " + getVozilo().getNaziv()
+                + " " +getVozilo().getModel()+ ": Zaduzeno/Razduzeno " +getVoziloZaduzeno()+ "-" + getVoziloRazduzeno();
+    }
+     
+    
 }

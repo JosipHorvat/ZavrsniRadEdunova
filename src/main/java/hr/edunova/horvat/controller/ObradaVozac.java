@@ -19,6 +19,15 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
     public List<Vozac> getPodaci() {
         return session.createQuery("from Vozac").list();
     }
+    
+    public List<Vozac> getPodaci(String uvjet) {
+        return session.createQuery("from Vozac v "
+              + " where concat(v.ime, ' ', v.prezime, ' ', v.oib) "
+              + " like :uvjet ")
+              .setParameter("uvjet", "%"+uvjet+"%")
+              .setMaxResults(20)
+              .list();
+    }
 
     @Override
     protected void kontrolaCreate() throws MyException {
