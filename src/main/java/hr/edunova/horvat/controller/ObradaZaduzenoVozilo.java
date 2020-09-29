@@ -22,17 +22,40 @@ public class ObradaZaduzenoVozilo extends Obrada<ZaduzenoVozilo>{
 
     @Override
     protected void kontrolaCreate() throws MyException {
-        
+       kontrolaDozvoleZaduzivanjaVozila();
     }
 
     @Override
     protected void kontrolaUpdate() throws MyException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     protected void kontrolaDelete() throws MyException {
   
     }
+    private void kontrolaDozvoleZaduzivanjaVozila() throws MyException{
+        
+        List<ZaduzenoVozilo> lista = session.createQuery(""
+                + " SELECT zv"
+                + " FROM ZaduzenoVozilo AS zv"
+                + " WHERE zv.vozac.id=:vozac_id and zv.vozilo.id=:vozilo_id and zv.voziloRazduzeno is null")
+                .setParameter("vozac_id", entitet.getVozac().getId())
+                .setParameter("vozilo_id", entitet.getVozilo().getId())
+                .list();
+        
+        if(lista.size()>0){
+            throw new MyException("Vozilo je dodijeljeno "+ lista.get(0).getVozac().getImeIPrezime() + ", Odaberite drugo Vozilo");
+        }
+        //dohvatiti iz baze sva nerazduzena vozila tog vozaca
+        // ako je ta lista veca od 0 , ne mozete zaduziti vozilo dok prethodno niste razduzili
+        //primjer je oib   
+        }
     
+   private void kontrolaDatumZaduziVozilo() throws MyException{
+       
+       if(entitet.getVoziloZaduzeno()== null){
+           throw new MyException("Unesi Datum");
+       }
+   }
 }

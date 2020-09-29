@@ -45,7 +45,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         obrada = new ObradaZaduzenoVozilo();
         setTitle(Aplikacija.operater.getImeIPrezime() + " -Zaduzena vozila");
         dodajSliku();
-        dpUnesiDatum.setVisible(false);
+      pnlDatePicker.setVisible(false);
 
         DefaultComboBoxModel<Vozilo> modelVozilo = new DefaultComboBoxModel<>();
         new ObradaVozilo().getPodaci().forEach(s -> {
@@ -59,19 +59,11 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         });
         cmbVozac.setModel(modelVozac);
 
-//        DatePicker date = new DatePicker();
-//        DatePicker date2 = new DatePicker();
-//        DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
-//        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
-//        date.setSettings(dps);
-//        date2.setSettings(dps);
-//        date.add(dpZaduzen);
-//        date2.add(dpRazduzen);
-        //dpZaduzen.setSettings(dpsZaduzeno);
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
         dpUnesiDatum.setSettings(dps);
-
+        
+        ucitajPodatke();
     }
 
     /**
@@ -83,41 +75,36 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        dpUnesiDatum = new com.github.lgooddatepicker.components.DatePicker();
-        jLabel2 = new javax.swing.JLabel();
+        pnlKontrolnoPolje = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cmbVozac = new javax.swing.JComboBox<>();
         cmbVozilo = new javax.swing.JComboBox<>();
-        btnOcisti = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
         btnIzmijeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
-        lblPoruka = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstZaduzenaVozila = new javax.swing.JList<>();
         rbtnRazduziVozilo = new javax.swing.JRadioButton();
         rbtnZaduziVozilo = new javax.swing.JRadioButton();
+        pnlDatePicker = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        dpUnesiDatum = new com.github.lgooddatepicker.components.DatePicker();
+        lblPoruka = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPaneZaduzenoRazduzeno = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstRazduzenaVozila = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstZaduzenaVozila = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        jLabel2.setText("Upisi Datum");
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         jLabel3.setText("Vozilo");
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel4.setText("Vozac");
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        btnOcisti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOcistiActionPerformed(evt);
-            }
-        });
 
         btnDodaj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDodaj.addActionListener(new java.awt.event.ActionListener() {
@@ -140,22 +127,6 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             }
         });
 
-        lblPoruka.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPoruka.setForeground(new java.awt.Color(0, 0, 102));
-
-        jScrollPane1.setViewportView(lstZaduzenaVozila);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-        );
-
         rbtnRazduziVozilo.setText("Razduzi vozilo");
         rbtnRazduziVozilo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,114 +141,160 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+        jLabel2.setText("Upisi Datum");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        javax.swing.GroupLayout pnlDatePickerLayout = new javax.swing.GroupLayout(pnlDatePicker);
+        pnlDatePicker.setLayout(pnlDatePickerLayout);
+        pnlDatePickerLayout.setHorizontalGroup(
+            pnlDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatePickerLayout.createSequentialGroup()
+                .addGroup(pnlDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatePickerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(dpUnesiDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatePickerLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlDatePickerLayout.setVerticalGroup(
+            pnlDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatePickerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dpUnesiDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jScrollPane1.setViewportView(txtPaneZaduzenoRazduzeno);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText(" Zaduzeno/Razduzeno Vozilo");
+
+        javax.swing.GroupLayout pnlKontrolnoPoljeLayout = new javax.swing.GroupLayout(pnlKontrolnoPolje);
+        pnlKontrolnoPolje.setLayout(pnlKontrolnoPoljeLayout);
+        pnlKontrolnoPoljeLayout.setHorizontalGroup(
+            pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIzmijeni, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbtnRazduziVozilo)
+                    .addComponent(rbtnZaduziVozilo))
+                .addGap(37, 37, 37)
+                .addComponent(pnlDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnZaduziVozilo)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap())
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(rbtnRazduziVozilo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dpUnesiDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(24, 24, 24))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btnOcisti, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(31, 31, 31)
-                                            .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(31, 31, 31)
-                                            .addComponent(btnIzmijeni, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(28, 28, 28)
-                                            .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addContainerGap())
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(66, 66, 66)))))))))
+                        .addGap(34, 34, 34)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnZaduziVozilo)))
+        pnlKontrolnoPoljeLayout.setVerticalGroup(
+            pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(1, 1, 1)
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addComponent(rbtnZaduziVozilo)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dpUnesiDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rbtnRazduziVozilo))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnDodaj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnIzmijeni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnOcisti, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                        .addComponent(rbtnRazduziVozilo)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addComponent(pnlDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)))
+                .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnObrisi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIzmijeni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDodaj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
         );
+
+        lstRazduzenaVozila.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstRazduzenaVozilaValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(lstRazduzenaVozila);
+
+        lstZaduzenaVozila.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstZaduzenaVozilaValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(lstZaduzenaVozila);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlKontrolnoPolje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(pnlKontrolnoPolje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnOcistiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcistiActionPerformed
-        ocistiPolja();
-    }//GEN-LAST:event_btnOcistiActionPerformed
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
 
@@ -296,6 +313,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnIzmijeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmijeniActionPerformed
+        lblPoruka.setText("");
         entitet = lstZaduzenaVozila.getSelectedValue();
         if (entitet == null) {
             return;
@@ -330,9 +348,9 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     }//GEN-LAST:event_btnObrisiActionPerformed
 
     private void rbtnRazduziVoziloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnRazduziVoziloActionPerformed
-        dpUnesiDatum.setVisible(true);
+        pnlDatePicker.setVisible(true);
         if (!rbtnRazduziVozilo.isSelected()) {
-            dpUnesiDatum.setVisible(false);
+            pnlDatePicker.setVisible(false);
         }
         if (rbtnRazduziVozilo.isSelected()) {
             rbtnZaduziVozilo.setSelected(false);
@@ -340,34 +358,95 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnRazduziVoziloActionPerformed
 
     private void rbtnZaduziVoziloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnZaduziVoziloActionPerformed
-        dpUnesiDatum.setVisible(true);
+        pnlDatePicker.setVisible(true);
         if (!rbtnZaduziVozilo.isSelected()) {
-            dpUnesiDatum.setVisible(false);
+            pnlDatePicker.setVisible(false);
         }
         if (rbtnZaduziVozilo.isSelected()) {
             rbtnRazduziVozilo.setSelected(false);
         }
-
+       
     }//GEN-LAST:event_rbtnZaduziVoziloActionPerformed
+
+    private void lstRazduzenaVozilaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstRazduzenaVozilaValueChanged
+
+          if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        
+        entitet = lstZaduzenaVozila.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+        
+        DefaultComboBoxModel<Vozac> v = (DefaultComboBoxModel<Vozac>) cmbVozac.getModel();
+        for (int i = 0; i < v.getSize(); i++){
+            if(v.getElementAt(i).getId().equals(entitet.getVozac().getId())){
+                cmbVozac.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+          DefaultComboBoxModel<Vozilo> vozilo = (DefaultComboBoxModel<Vozilo>) cmbVozilo.getModel();
+        for (int i = 0; i < vozilo.getSize(); i++){
+            if(vozilo.getElementAt(i).getId().equals(entitet.getVozilo().getId())){
+                cmbVozilo.setSelectedIndex(i);
+                break;
+            }
+        
+    }                               
+
+    }//GEN-LAST:event_lstRazduzenaVozilaValueChanged
+
+    private void lstZaduzenaVozilaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZaduzenaVozilaValueChanged
+         if (evt.getValueIsAdjusting()) {
+            return;
+        }
+        
+        entitet = lstZaduzenaVozila.getSelectedValue();
+        if (entitet == null) {
+            return;
+        }
+        
+        DefaultComboBoxModel<Vozac> v = (DefaultComboBoxModel<Vozac>) cmbVozac.getModel();
+        for (int i = 0; i < v.getSize(); i++){
+            if(v.getElementAt(i).getId().equals(entitet.getVozac().getId())){
+                cmbVozac.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+          DefaultComboBoxModel<Vozilo> vozilo = (DefaultComboBoxModel<Vozilo>) cmbVozilo.getModel();
+        for (int i = 0; i < vozilo.getSize(); i++){
+            if(vozilo.getElementAt(i).getId().equals(entitet.getVozilo().getId())){
+                cmbVozilo.setSelectedIndex(i);
+                break;
+            }
+        }
+    }//GEN-LAST:event_lstZaduzenaVozilaValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnIzmijeni;
     private javax.swing.JButton btnObrisi;
-    private javax.swing.JButton btnOcisti;
     private javax.swing.JComboBox<Vozac> cmbVozac;
     private javax.swing.JComboBox<Vozilo> cmbVozilo;
     private com.github.lgooddatepicker.components.DatePicker dpUnesiDatum;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblPoruka;
+    private javax.swing.JList<ZaduzenoVozilo> lstRazduzenaVozila;
     private javax.swing.JList<ZaduzenoVozilo> lstZaduzenaVozila;
+    private javax.swing.JPanel pnlDatePicker;
+    private javax.swing.JPanel pnlKontrolnoPolje;
     private javax.swing.JRadioButton rbtnRazduziVozilo;
     private javax.swing.JRadioButton rbtnZaduziVozilo;
+    private javax.swing.JTextPane txtPaneZaduzenoRazduzeno;
     // End of variables declaration//GEN-END:variables
 
     private void postaviVrijednostiUEntitet() {
@@ -405,8 +484,10 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     private void ucitajPodatke() {
         DefaultListModel<ZaduzenoVozilo> m = new DefaultListModel<>();
         obrada.getPodaci().forEach(s -> m.addElement(s));
+       
         lstZaduzenaVozila.setModel(m);
-    }
+        
+        }
 
     private void ocistiPolja() {
         dpUnesiDatum.clear();
