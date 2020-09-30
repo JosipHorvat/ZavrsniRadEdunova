@@ -89,8 +89,6 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         dpUnesiDatum = new com.github.lgooddatepicker.components.DatePicker();
         lblPoruka = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtPaneZaduzenoRazduzeno = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstRazduzenaVozila = new javax.swing.JList<>();
@@ -167,7 +165,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                 .addComponent(dpUnesiDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jScrollPane1.setViewportView(txtPaneZaduzenoRazduzeno);
+        lblPoruka.setForeground(new java.awt.Color(204, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText(" Zaduzeno/Razduzeno Vozilo");
@@ -197,23 +195,22 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                 .addComponent(pnlDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
-                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(33, 33, 33)
+                            .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                            .addGap(80, 80, 80)
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(34, 34, 34)))
                     .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel1)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         pnlKontrolnoPoljeLayout.setVerticalGroup(
@@ -227,11 +224,9 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                 .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(50, 50, 50)
                 .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
                         .addComponent(rbtnZaduziVozilo)
@@ -250,6 +245,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                 .addGap(61, 61, 61))
         );
 
+        lstRazduzenaVozila.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstRazduzenaVozila.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstRazduzenaVozilaValueChanged(evt);
@@ -257,6 +253,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstRazduzenaVozila);
 
+        lstZaduzenaVozila.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstZaduzenaVozila.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstZaduzenaVozilaValueChanged(evt);
@@ -436,7 +433,6 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblPoruka;
@@ -446,7 +442,6 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     private javax.swing.JPanel pnlKontrolnoPolje;
     private javax.swing.JRadioButton rbtnRazduziVozilo;
     private javax.swing.JRadioButton rbtnZaduziVozilo;
-    private javax.swing.JTextPane txtPaneZaduzenoRazduzeno;
     // End of variables declaration//GEN-END:variables
 
     private void postaviVrijednostiUEntitet() {
@@ -483,9 +478,19 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
 
     private void ucitajPodatke() {
         DefaultListModel<ZaduzenoVozilo> m = new DefaultListModel<>();
+      
         obrada.getPodaci().forEach(s -> m.addElement(s));
-       
-        lstZaduzenaVozila.setModel(m);
+     // if(entitet.getVoziloRazduzeno() == null){
+     ZaduzenoVozilo zaduzeno = new ZaduzenoVozilo();
+     for(int i = 0; i < m.size(); i++){
+         if(zaduzeno.getVoziloRazduzeno()== null){
+             lstZaduzenaVozila.setModel(m);
+         }
+         
+     }
+        
+   // }
+        lstRazduzenaVozila.setModel(m);
         
         }
 

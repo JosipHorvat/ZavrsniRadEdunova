@@ -32,6 +32,7 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
     @Override
     protected void kontrolaCreate() throws MyException {
         super.kontrolaCreate();
+        kontrolaOibBazaKreiraj();
         
     }
 
@@ -46,7 +47,32 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
             throw new MyException("Vozac se ne moze obrisati jer nije uklonjeno razduzeno/zaduzeno vozilo");
         }
     }
-  
+     private void kontrolaOibBazaKreiraj() throws MyException{
+       List<Vozac> lista = session.createQuery(""
+               + " from Vozac v "
+               + " where v.oib=:oib "
+               )
+               .setParameter("oib", entitet.getOib())
+               .list();
+       if(lista.size()>0){
+           throw new MyException("Oib je dodjeljen " + lista.get(0).getImeIPrezime()+ ", odaberite drugi OIB");
+       }
+       
+    }
+     
+       private void kontrolaOibBazaPromjeni() throws MyException{
+       List<Vozac> lista = session.createQuery(""
+               + " from Vozac v "
+               + " where v.oib=:oib and v.id!=:id"
+               )
+               .setParameter("oib", entitet.getOib())
+               .setParameter("id", entitet.getId())
+               .list();
+       if(lista.size()>0){
+           throw  new MyException("Oib je dodjeljen " + lista.get(0).getImeIPrezime() + ", odaberite drugi OIB");
+       }
+       
+    }
  
  
 }

@@ -17,12 +17,13 @@ public class ObradaZaduzenoVozilo extends Obrada<ZaduzenoVozilo>{
 
     @Override
     public List<ZaduzenoVozilo> getPodaci() {
-        return session.createQuery("from ZaduzenoVozilo").list();
+        return session.createQuery("from ZaduzenoVozilo").list();     
     }
 
     @Override
     protected void kontrolaCreate() throws MyException {
-       kontrolaDozvoleZaduzivanjaVozila();
+        kontrolaDozvoleZaduzivanjaVozila();
+        kontrolaDatumZaduziVozilo();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class ObradaZaduzenoVozilo extends Obrada<ZaduzenoVozilo>{
    private void kontrolaDatumZaduziVozilo() throws MyException{
        
        if(entitet.getVoziloZaduzeno()== null){
-           throw new MyException("Unesi Datum");
+           throw new MyException("Datum obavezan");
        }
    }
 }
