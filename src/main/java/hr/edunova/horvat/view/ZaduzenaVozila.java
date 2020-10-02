@@ -18,6 +18,7 @@ import java.awt.Image;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -33,7 +34,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     ImageIcon updateIcon = new ImageIcon("updateIcon.png");
     ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
     ImageIcon searchIcon = new ImageIcon("searchIcon.png");
-
+    
     private ObradaZaduzenoVozilo obrada;
     private ZaduzenoVozilo entitet;
 
@@ -45,20 +46,20 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         obrada = new ObradaZaduzenoVozilo();
         setTitle(Aplikacija.operater.getImeIPrezime() + " -Zaduzena vozila");
         dodajSliku();
-      pnlDatePicker.setVisible(false);
-
+        pnlDatePicker.setVisible(false);
+        
         DefaultComboBoxModel<Vozilo> modelVozilo = new DefaultComboBoxModel<>();
         new ObradaVozilo().getPodaci().forEach(s -> {
             modelVozilo.addElement(s);
         });
         cmbVozilo.setModel(modelVozilo);
-
+        
         DefaultComboBoxModel<Vozac> modelVozac = new DefaultComboBoxModel<>();
         new ObradaVozac().getPodaci().forEach(j -> {
             modelVozac.addElement(j);
         });
         cmbVozac.setModel(modelVozac);
-
+        
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
         dpUnesiDatum.setSettings(dps);
@@ -294,12 +295,12 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-
+        
         lblPoruka.setText("");
         entitet = new ZaduzenoVozilo();
-
+        
         postaviVrijednostiUEntitet();
-
+        
         try {
             obrada.create();
             ucitajPodatke();
@@ -316,7 +317,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             return;
         }
         postaviVrijednostiUEntitet();
-
+        
         try {
             obrada.update();
             ucitajPodatke();
@@ -333,7 +334,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             return;
         }
         obrada.setEntitet(entitet);
-
+        
         try {
             obrada.delete();
             ucitajPodatke();
@@ -362,12 +363,12 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         if (rbtnZaduziVozilo.isSelected()) {
             rbtnRazduziVozilo.setSelected(false);
         }
-       
+        
     }//GEN-LAST:event_rbtnZaduziVoziloActionPerformed
 
     private void lstRazduzenaVozilaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstRazduzenaVozilaValueChanged
-
-          if (evt.getValueIsAdjusting()) {
+        
+        if (evt.getValueIsAdjusting()) {
             return;
         }
         
@@ -377,26 +378,26 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         }
         
         DefaultComboBoxModel<Vozac> v = (DefaultComboBoxModel<Vozac>) cmbVozac.getModel();
-        for (int i = 0; i < v.getSize(); i++){
-            if(v.getElementAt(i).getId().equals(entitet.getVozac().getId())){
+        for (int i = 0; i < v.getSize(); i++) {
+            if (v.getElementAt(i).getId().equals(entitet.getVozac().getId())) {
                 cmbVozac.setSelectedIndex(i);
                 break;
             }
         }
         
-          DefaultComboBoxModel<Vozilo> vozilo = (DefaultComboBoxModel<Vozilo>) cmbVozilo.getModel();
-        for (int i = 0; i < vozilo.getSize(); i++){
-            if(vozilo.getElementAt(i).getId().equals(entitet.getVozilo().getId())){
+        DefaultComboBoxModel<Vozilo> vozilo = (DefaultComboBoxModel<Vozilo>) cmbVozilo.getModel();
+        for (int i = 0; i < vozilo.getSize(); i++) {
+            if (vozilo.getElementAt(i).getId().equals(entitet.getVozilo().getId())) {
                 cmbVozilo.setSelectedIndex(i);
                 break;
             }
-        
-    }                               
+            
+        }        
 
     }//GEN-LAST:event_lstRazduzenaVozilaValueChanged
 
     private void lstZaduzenaVozilaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZaduzenaVozilaValueChanged
-         if (evt.getValueIsAdjusting()) {
+        if (evt.getValueIsAdjusting()) {
             return;
         }
         
@@ -406,16 +407,16 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         }
         
         DefaultComboBoxModel<Vozac> v = (DefaultComboBoxModel<Vozac>) cmbVozac.getModel();
-        for (int i = 0; i < v.getSize(); i++){
-            if(v.getElementAt(i).getId().equals(entitet.getVozac().getId())){
+        for (int i = 0; i < v.getSize(); i++) {
+            if (v.getElementAt(i).getId().equals(entitet.getVozac().getId())) {
                 cmbVozac.setSelectedIndex(i);
                 break;
             }
         }
         
-          DefaultComboBoxModel<Vozilo> vozilo = (DefaultComboBoxModel<Vozilo>) cmbVozilo.getModel();
-        for (int i = 0; i < vozilo.getSize(); i++){
-            if(vozilo.getElementAt(i).getId().equals(entitet.getVozilo().getId())){
+        DefaultComboBoxModel<Vozilo> vozilo = (DefaultComboBoxModel<Vozilo>) cmbVozilo.getModel();
+        for (int i = 0; i < vozilo.getSize(); i++) {
+            if (vozilo.getElementAt(i).getId().equals(entitet.getVozilo().getId())) {
                 cmbVozilo.setSelectedIndex(i);
                 break;
             }
@@ -445,10 +446,10 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void postaviVrijednostiUEntitet() {
-
+        
         entitet.setVozac((Vozac) cmbVozac.getSelectedItem());
         entitet.setVozilo((Vozilo) cmbVozilo.getSelectedItem());
-
+        
         if (rbtnZaduziVozilo.isSelected()) {
             try {
                 entitet.setVoziloZaduzeno(Date.from(dpUnesiDatum.getDate().atStartOfDay()
@@ -458,11 +459,11 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             } catch (Exception e) {
                 entitet.setVoziloZaduzeno(null);
             }
-
+            
         }
-
+        
         if (rbtnRazduziVozilo.isSelected()) {
-
+            
             try {
                 entitet.setVoziloRazduzeno(Date.from(dpUnesiDatum.getDate().atStartOfDay()
                         .atZone(ZoneId.systemDefault())
@@ -471,48 +472,48 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                 entitet.setVoziloRazduzeno(null);
             }
         }
-           
+        
         obrada.setEntitet(entitet);
-
+        
     }
-
+    
     private void ucitajPodatke() {
-        DefaultListModel<ZaduzenoVozilo> m = new DefaultListModel<>();
-      
-        obrada.getPodaci().forEach(s -> m.addElement(s));
-     // if(entitet.getVoziloRazduzeno() == null){
-     ZaduzenoVozilo zaduzeno = new ZaduzenoVozilo();
-     for(int i = 0; i < m.size(); i++){
-         if(zaduzeno.getVoziloRazduzeno()== null){
-             lstZaduzenaVozila.setModel(m);
-         }
-         
-     }
+        DefaultListModel<ZaduzenoVozilo> mZaduzeno = new DefaultListModel<>();
+        DefaultListModel<ZaduzenoVozilo> mRazduzeno = new DefaultListModel<>();
         
-   // }
-        lstRazduzenaVozila.setModel(m);
+        List<ZaduzenoVozilo> lista = obrada.getPodaci();
         
-        }
-
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getVoziloRazduzeno() == null) {
+                mZaduzeno.addElement(lista.get(i));
+            } else {
+                mRazduzeno.addElement(lista.get(i));
+            }
+                  }
+        lstRazduzenaVozila.setModel(mRazduzeno);
+        lstZaduzenaVozila.setModel(mZaduzeno);     
+    }
+    
     private void ocistiPolja() {
         dpUnesiDatum.clear();
-
+        
     }
-     public void dodajSliku(){
-      
-       Image image = createIcon.getImage();
-       Image imageScale = image.getScaledInstance(btnDodaj.getWidth(), btnDodaj.getHeight(), Image.SCALE_SMOOTH);
-       ImageIcon  scaledIcon = new ImageIcon(imageScale);
-       btnDodaj.setIcon(scaledIcon);
-       
-       Image image1 = updateIcon.getImage();
-       Image imageScale1 = image1.getScaledInstance(btnIzmijeni.getWidth(), btnIzmijeni.getHeight(), Image.SCALE_SMOOTH);
-       ImageIcon  scaledIcon1 = new ImageIcon(imageScale1);
-       btnIzmijeni.setIcon(scaledIcon1);
-       
-       Image image2 = deleteIcon.getImage();
-       Image imageScale2 = image2.getScaledInstance(btnObrisi.getWidth(), btnObrisi.getHeight(), Image.SCALE_SMOOTH);
-       ImageIcon  scaledIcon2 = new ImageIcon(imageScale2);
-       btnObrisi.setIcon(scaledIcon2);
-     }
+    
+    public void dodajSliku() {
+        
+        Image image = createIcon.getImage();
+        Image imageScale = image.getScaledInstance(btnDodaj.getWidth(), btnDodaj.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imageScale);
+        btnDodaj.setIcon(scaledIcon);
+        
+        Image image1 = updateIcon.getImage();
+        Image imageScale1 = image1.getScaledInstance(btnIzmijeni.getWidth(), btnIzmijeni.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon1 = new ImageIcon(imageScale1);
+        btnIzmijeni.setIcon(scaledIcon1);
+        
+        Image image2 = deleteIcon.getImage();
+        Image imageScale2 = image2.getScaledInstance(btnObrisi.getWidth(), btnObrisi.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon2 = new ImageIcon(imageScale2);
+        btnObrisi.setIcon(scaledIcon2);
+    }
 }

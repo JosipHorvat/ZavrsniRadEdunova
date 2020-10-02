@@ -39,6 +39,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         kontrolaRegistracijskaOznaka();
         kontrolaUkupnoPredjenihKm();
         kontrolaDatum();
+        kontrolaJedinstvenaRegistracijskaOznaka();
        
     }
 
@@ -48,6 +49,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         kontrolaModel();
         kontrolaRegistracijskaOznaka();
         kontrolaUkupnoPredjenihKm();
+        kontrolaJedinstvenaRegistracijskaOznaka();
        
     }
 
@@ -85,6 +87,18 @@ public class ObradaVozilo extends Obrada<Vozilo>{
            throw new MyException("Registracijska oznaka mora biti unesena");
        }
    }
+   private void kontrolaJedinstvenaRegistracijskaOznaka() throws MyException{
+       List<Vozilo> lista = session.createQuery(""
+       + " FROM Vozilo v "
+       + " WHERE v.registracijskaOznaka=:registracijskaOznaka "
+       )
+         .setParameter("registracijskaOznaka", entitet.getRegistracijskaOznaka())
+         .list();
+       if(lista.size()>0){
+           throw new MyException("Registracijska oznaka je dodijeljena vozilu: "+ lista.get(0).getNaziv()+ " "
+           + lista.get(0).getModel());
+       }
+   }
    
  
     
@@ -97,6 +111,8 @@ public class ObradaVozilo extends Obrada<Vozilo>{
   private void kontrolaDatum()throws MyException{
       kontrolaNull(entitet.getDatumProizvodnje(), "Datum proizvodnje se mora unijeti");
   }
+  
+ 
   
    private void kontrolaNull(Object o, String poruka)throws MyException{
          if(o==null){
