@@ -25,6 +25,17 @@ public class Vozac extends Osoba{
     
       @OneToMany(mappedBy = "vozac")
     private List<ZaduzenoVozilo> zaduzenaVozila = new ArrayList<>();
+      
+      @OneToMany(mappedBy = "vozac")
+    private List<Prijevoz> prijevoz = new ArrayList<>();
+
+    public List<Prijevoz> getPrijevoz() {
+        return prijevoz;
+    }
+
+    public void setPrijevoz(List<Prijevoz> prijevoz) {
+        this.prijevoz = prijevoz;
+    }
 
     public List<ZaduzenoVozilo> getZaduzenaVozila() {
         return zaduzenaVozila;

@@ -127,6 +127,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jSeparator3);
 
         jmiPrijevoz.setText("Prijevoz");
+        jmiPrijevoz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPrijevozActionPerformed(evt);
+            }
+        });
         jmnIzbornik.add(jmiPrijevoz);
         jmnIzbornik.add(jSeparator4);
 
@@ -180,6 +185,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void jmiZaduzenaVozilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiZaduzenaVozilaActionPerformed
        new ZaduzenaVozila().setVisible(true);
     }//GEN-LAST:event_jmiZaduzenaVozilaActionPerformed
+
+    private void jmiPrijevozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPrijevozActionPerformed
+       new PrijevozPutnika().setVisible(true);
+    }//GEN-LAST:event_jmiPrijevozActionPerformed
 
   
 

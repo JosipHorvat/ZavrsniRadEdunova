@@ -37,11 +37,13 @@ public class Prijevoz extends Entitet {
         this.vozac = vozac;
     }
 
-    
-     
-    
-
-    public String getPolaziste() {
+    @Override
+    public String toString() {
+        return "Broj putnika " +  getBrojPutnika() + ",  Cijena: "+ getCijena() + " kn.";
+        //getVozac().getImeIPrezime()+
+    }
+        
+   public String getPolaziste() {
         return polaziste;
     }
 
