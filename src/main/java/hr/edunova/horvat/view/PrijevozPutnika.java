@@ -11,11 +11,14 @@ import hr.edunova.horvat.model.Prijevoz;
 import hr.edunova.horvat.model.Vozac;
 import hr.edunova.horvat.utility.MyException;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -27,6 +30,12 @@ public class PrijevozPutnika extends javax.swing.JFrame {
     private ObradaPrijevoz obrada;
     private Prijevoz entitet;
     private ObradaVozac obradaVozac;
+    
+    ImageIcon createIcon = new ImageIcon("DatabaseDodajIcon.png");
+    ImageIcon updateIcon = new ImageIcon("updateIcon.png");
+    ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
+    ImageIcon searchIcon = new ImageIcon("searchIcon.png");
+    ImageIcon cleanIcon = new ImageIcon("Metlica.png");
 
     /**
      * Creates new form PrijevozPutnika
@@ -35,6 +44,7 @@ public class PrijevozPutnika extends javax.swing.JFrame {
         initComponents();
         obrada = new ObradaPrijevoz();
         obradaVozac = new ObradaVozac();
+        dodajSliku();
         ucitajPodatke();
         setTitle(Aplikacija.operater.getImeIPrezime()+" - Prijevoz putnika") ;
         
@@ -77,6 +87,7 @@ public class PrijevozPutnika extends javax.swing.JFrame {
         btnTrazilica = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstPodaci = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -163,7 +174,7 @@ public class PrijevozPutnika extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -220,6 +231,14 @@ public class PrijevozPutnika extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstPodaci);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("?");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,10 +247,7 @@ public class PrijevozPutnika extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnTrazilica, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(239, 239, 239)
+                        .addGap(485, 485, 485)
                         .addComponent(btnOcisti, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,23 +256,24 @@ public class PrijevozPutnika extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnTrazilica, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlPodaci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(179, 179, 179))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnTrazilica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -273,7 +290,15 @@ public class PrijevozPutnika extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnOcisti, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25)))
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTrazilica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtUvjet, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -375,6 +400,10 @@ public class PrijevozPutnika extends javax.swing.JFrame {
         
     }//GEN-LAST:event_lstPodaciValueChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    JOptionPane.showMessageDialog(rootPane, "\tUpisi ime i prezime vozaca\nza pregled prijevoza\n odredjenog vozaca");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnIzmijeni;
@@ -382,6 +411,7 @@ public class PrijevozPutnika extends javax.swing.JFrame {
     private javax.swing.JButton btnOcisti;
     private javax.swing.JButton btnTrazilica;
     private javax.swing.JComboBox<Vozac> cmbVozac;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -400,8 +430,13 @@ public class PrijevozPutnika extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void postaviVrijednostiUEntitet() {
-            
+        
+       try{     
     entitet.setBrojPutnika(Integer.parseInt(txtBrojPutnika.getText()));
+       }catch(NumberFormatException e){
+           entitet.setBrojPutnika(0);
+       }
+    
     entitet.setPolaziste(txtPolaziste.getText());
     entitet.setOdrediste(txtOdrediste.getText());
     try{
@@ -430,7 +465,34 @@ public class PrijevozPutnika extends javax.swing.JFrame {
     
     private void ucitajPodatke() {
         DefaultListModel<Prijevoz> m = new DefaultListModel<>();
-        obrada.getPodaci().forEach(s-> m.addElement(s));
+        obrada.getPodaci(txtUvjet.getText()).forEach(s-> m.addElement(s));
         lstPodaci.setModel(m);
+    }
+    public final void dodajSliku(){
+      
+       Image image = createIcon.getImage();
+       Image imageScale = image.getScaledInstance(btnDodaj.getWidth(), btnDodaj.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon = new ImageIcon(imageScale);
+       btnDodaj.setIcon(scaledIcon);
+       
+       Image image1 = updateIcon.getImage();
+       Image imageScale1 = image1.getScaledInstance(btnIzmijeni.getWidth(), btnIzmijeni.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon1 = new ImageIcon(imageScale1);
+       btnIzmijeni.setIcon(scaledIcon1);
+       
+       Image image2 = deleteIcon.getImage();
+       Image imageScale2 = image2.getScaledInstance(btnObrisi.getWidth(), btnObrisi.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon2 = new ImageIcon(imageScale2);
+       btnObrisi.setIcon(scaledIcon2);
+       
+       Image trazilica = searchIcon.getImage();
+       Image imageScale3 = trazilica.getScaledInstance(btnTrazilica.getWidth(), btnTrazilica.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon3 = new ImageIcon(imageScale3);
+       btnTrazilica.setIcon(scaledIcon3);
+       
+       Image metlica = cleanIcon.getImage();
+       Image imageScale4 = metlica.getScaledInstance(btnOcisti.getWidth(), btnOcisti.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon4 = new ImageIcon(imageScale4);
+       btnOcisti.setIcon(scaledIcon4);
     }
 }

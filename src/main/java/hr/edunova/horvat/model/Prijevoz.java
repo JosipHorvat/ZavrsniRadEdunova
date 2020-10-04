@@ -39,7 +39,7 @@ public class Prijevoz extends Entitet {
 
     @Override
     public String toString() {
-        return "Broj putnika " +  getBrojPutnika() + ",  Cijena: "+ getCijena() + " kn.";
+        return "Broj putnika " +  getBrojPutnika() + ",  Cijena: "+ getCijena() + " kn." + "Vozac: "+ getVozac().getImeIPrezime();
         //getVozac().getImeIPrezime()+
     }
         

@@ -2,6 +2,7 @@
 package hr.edunova.horvat.controller;
 
 import hr.edunova.horvat.model.Prijevoz;
+import hr.edunova.horvat.model.Vozac;
 import hr.edunova.horvat.utility.MyException;
 import hr.edunova.horvat.utility.PomocnaMetoda;
 import java.math.BigDecimal;
@@ -21,24 +22,51 @@ public class ObradaPrijevoz extends Obrada<Prijevoz>{
     public List<Prijevoz> getPodaci() {
        return session.createQuery("from Prijevoz").list();
     }
+    
+    public List<Prijevoz> getPodaci(String uvjet){
+        return session.createQuery("SELECT p"
+              +  " FROM Prijevoz as p "  
+              +  " left join p.vozac v " 
+              +  " where concat(v.ime, ' ', v.prezime) "
+              +  " like :uvjet ")      
+                .setParameter("uvjet", "%"+uvjet+"%")
+               .list();
+                
+    }
 
     @Override
     protected void kontrolaCreate() throws MyException {
+        kontrolaBrojPutnika();
         kontrolaPolaz();
         kontrolaDolaz();
-        kontrolaCijene();
         kontrolaUkupnoKm();
-        kontrolaBrojPutnika();
+        kontrolaCijene();
     }
 
     @Override
     protected void kontrolaUpdate() throws MyException {
+        kontrolaBrojPutnika();
+        kontrolaPolaz();
+        kontrolaDolaz();
+        kontrolaUkupnoKm();
+        kontrolaCijene();
         
+        
+       
     }
 
     @Override
     protected void kontrolaDelete() throws MyException {
 
+    }
+    
+    private  void kontrolaBrojPutnika() throws MyException{
+        if( entitet.getBrojPutnika().toString().trim().isEmpty()){
+            throw new MyException("Broj putnika obavezno unijeti");
+        }
+        if(entitet.getBrojPutnika()<1){
+            throw new MyException("Za prijevoz je potreban minimalno 1 putnik");
+        }
     }
     
     private void kontrolaPolaz() throws MyException{
@@ -67,12 +95,6 @@ public class ObradaPrijevoz extends Obrada<Prijevoz>{
        
      }
      
-     private void kontrolaBrojPutnika() throws MyException{
-        PomocnaMetoda.kontrolaNull(entitet.getBrojPutnika(), "Obavezan broj putnika");
-        if(entitet.getBrojPutnika()<1){
-            throw new MyException("Ne moze biti manje od jednog putnika");
-        }
-        
-    }    
     
+          
 }
