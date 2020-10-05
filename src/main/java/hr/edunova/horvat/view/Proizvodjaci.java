@@ -8,7 +8,15 @@ package hr.edunova.horvat.view;
 import hr.edunova.horvat.controller.ObradaProizvodjac;
 import hr.edunova.horvat.model.Proizvodjac;
 import hr.edunova.horvat.utility.MyException;
+import java.awt.Desktop;
 import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 
@@ -24,6 +32,7 @@ public class Proizvodjaci extends javax.swing.JFrame {
     ImageIcon createIcon = new ImageIcon("DatabaseDodajIcon.png");
     ImageIcon updateIcon = new ImageIcon("updateIcon.png");
     ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
+    ImageIcon searchIcon = new ImageIcon("searchIcon.png");
     /**
      * Creates new form Proizvodjaci
      */
@@ -57,7 +66,7 @@ public class Proizvodjaci extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnWebStranica = new javax.swing.JButton();
         lblPoruka = new javax.swing.JLabel();
         btnIzmijeni = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
@@ -96,7 +105,11 @@ public class Proizvodjaci extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Web stranica");
 
-        jButton5.setText("jButton5");
+        btnWebStranica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWebStranicaActionPerformed(evt);
+            }
+        });
 
         lblPoruka.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPoruka.setForeground(new java.awt.Color(204, 0, 0));
@@ -121,7 +134,8 @@ public class Proizvodjaci extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtWebStranica, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                        .addComponent(btnWebStranica, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 8, Short.MAX_VALUE))
                     .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,7 +156,7 @@ public class Proizvodjaci extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(btnWebStranica, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(txtWebStranica))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
@@ -175,16 +189,17 @@ public class Proizvodjaci extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(43, 43, 43)
                         .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addComponent(btnIzmijeni, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -275,11 +290,20 @@ public class Proizvodjaci extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnObrisiActionPerformed
 
+    private void btnWebStranicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebStranicaActionPerformed
+        try {
+            TraziWebStranicu();
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(Proizvodjaci.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+    }//GEN-LAST:event_btnWebStranicaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnIzmijeni;
     private javax.swing.JButton btnObrisi;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnWebStranica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -321,6 +345,11 @@ public class Proizvodjaci extends javax.swing.JFrame {
        Image imageScale2 = image2.getScaledInstance(btnObrisi.getWidth(), btnObrisi.getHeight(), Image.SCALE_SMOOTH);
        ImageIcon  scaledIcon2 = new ImageIcon(imageScale2);
        btnObrisi.setIcon(scaledIcon2);
+    
+       Image trazilica = searchIcon.getImage();
+       Image imageScale3 = trazilica.getScaledInstance(btnWebStranica.getWidth(), btnWebStranica.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon3 = new ImageIcon(imageScale3);
+       btnWebStranica.setIcon(scaledIcon3);
     }
 
     private void ocistiPolja() {
@@ -339,5 +368,13 @@ public class Proizvodjaci extends javax.swing.JFrame {
         entitet.setWebStranica(txtWebStranica.getText());
         
         obrada.setEntitet(entitet);
+    }
+    private void TraziWebStranicu() throws  URISyntaxException, IOException{
+   
+       Desktop desktop = Desktop.getDesktop();
+       String s;
+       s= txtWebStranica.getText();
+       desktop.browse(new URI(s));
+         
     }
 }

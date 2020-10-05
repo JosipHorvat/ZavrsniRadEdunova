@@ -7,23 +7,38 @@ package hr.edunova.horvat.view;
 
 import com.toedter.calendar.JCalendar;
 import java.awt.BorderLayout;
+import java.awt.Image;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import javassist.Loader;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Josip
  */
-public class Izbornik extends javax.swing.JFrame {
+public class Izbornik extends javax.swing.JFrame implements Runnable{
 
     /**
      * Creates new form Izbornik
      */
+    ImageIcon pozadina = new ImageIcon("transportIzbornik.jpg");
+    int sat,minuta,sekunda;
+    
     public Izbornik() {
         initComponents();
-        Kalendar();
+             
+        ucitajSliku();
         
         jmnIzbornik.setText(Aplikacija.NAZIV_APLIKACIJE);
         setTitle(Aplikacija.operater.getImeIPrezime());
         jmiOperateri.setVisible(Aplikacija.isAdmin());
+        
+        Thread t = new Thread(this);
+        t.start();
     }
 
     /**
@@ -36,7 +51,8 @@ public class Izbornik extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlPozadina = new javax.swing.JPanel();
-        pnlKalendar = new javax.swing.JPanel();
+        lblPozadinskaSlika = new javax.swing.JLabel();
+        lblSat = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jmnIzbornik = new javax.swing.JMenu();
         jmiProizvodjaci = new javax.swing.JMenuItem();
@@ -54,34 +70,34 @@ public class Izbornik extends javax.swing.JFrame {
         jmiIzlaz = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        pnlKalendar.setBackground(new java.awt.Color(0, 0, 255));
+        pnlPozadina.setBackground(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout pnlKalendarLayout = new javax.swing.GroupLayout(pnlKalendar);
-        pnlKalendar.setLayout(pnlKalendarLayout);
-        pnlKalendarLayout.setHorizontalGroup(
-            pnlKalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 181, Short.MAX_VALUE)
-        );
-        pnlKalendarLayout.setVerticalGroup(
-            pnlKalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-        );
+        lblSat.setBackground(new java.awt.Color(0, 0, 0));
+        lblSat.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblSat.setForeground(new java.awt.Color(255, 255, 255));
+        lblSat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSat.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout pnlPozadinaLayout = new javax.swing.GroupLayout(pnlPozadina);
         pnlPozadina.setLayout(pnlPozadinaLayout);
         pnlPozadinaLayout.setHorizontalGroup(
             pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
-                .addContainerGap(307, Short.MAX_VALUE)
-                .addComponent(pnlKalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+            .addGroup(pnlPozadinaLayout.createSequentialGroup()
+                .addComponent(lblPozadinskaSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(lblSat, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlPozadinaLayout.setVerticalGroup(
             pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPozadinaLayout.createSequentialGroup()
-                .addComponent(pnlKalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 220, Short.MAX_VALUE))
+                .addComponent(lblPozadinskaSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSat, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
         );
 
         jMenuBar2.setBackground(new java.awt.Color(0, 0, 0));
@@ -90,6 +106,7 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.setForeground(new java.awt.Color(255, 255, 255));
         jmnIzbornik.setText("Izbornik");
 
+        jmiProizvodjaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiProizvodjaci.setText("Proizvodjaci");
         jmiProizvodjaci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +116,7 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jmiProizvodjaci);
         jmnIzbornik.add(jSeparator1);
 
+        jmiVozila.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiVozila.setText("Vozila");
         jmiVozila.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +126,7 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jmiVozila);
         jmnIzbornik.add(jSeparator2);
 
+        jmiVozaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiVozaci.setText("Vozaci");
         jmiVozaci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +136,7 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jmiVozaci);
         jmnIzbornik.add(jSeparator6);
 
+        jmiZaduzenaVozila.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiZaduzenaVozila.setText("Zaduzena vozila");
         jmiZaduzenaVozila.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +146,7 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jmiZaduzenaVozila);
         jmnIzbornik.add(jSeparator3);
 
+        jmiPrijevoz.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiPrijevoz.setText("Prijevoz");
         jmiPrijevoz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,10 +156,12 @@ public class Izbornik extends javax.swing.JFrame {
         jmnIzbornik.add(jmiPrijevoz);
         jmnIzbornik.add(jSeparator4);
 
+        jmiOperateri.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiOperateri.setText("Operateri");
         jmnIzbornik.add(jmiOperateri);
         jmnIzbornik.add(jSeparator5);
 
+        jmiIzlaz.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jmiIzlaz.setText("Izlaz");
         jmiIzlaz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,11 +178,15 @@ public class Izbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPozadina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlPozadina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPozadina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(pnlPozadina, javax.swing.GroupLayout.PREFERRED_SIZE, 311, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -169,10 +196,6 @@ public class Izbornik extends javax.swing.JFrame {
     private void jmiIzlazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiIzlazActionPerformed
         dispose();
     }//GEN-LAST:event_jmiIzlazActionPerformed
-
-    private void jmiProizvodjaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProizvodjaciActionPerformed
-       new Proizvodjaci().setVisible(true);
-    }//GEN-LAST:event_jmiProizvodjaciActionPerformed
 
     private void jmiVozilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVozilaActionPerformed
         new Vozila().setVisible(true);
@@ -189,6 +212,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void jmiPrijevozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPrijevozActionPerformed
        new PrijevozPutnika().setVisible(true);
     }//GEN-LAST:event_jmiPrijevozActionPerformed
+
+    private void jmiProizvodjaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProizvodjaciActionPerformed
+        new Proizvodjaci().setVisible(true);
+    }//GEN-LAST:event_jmiProizvodjaciActionPerformed
 
   
 
@@ -208,19 +235,33 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiVozila;
     private javax.swing.JMenuItem jmiZaduzenaVozila;
     private javax.swing.JMenu jmnIzbornik;
-    private javax.swing.JPanel pnlKalendar;
+    private javax.swing.JLabel lblPozadinskaSlika;
+    private javax.swing.JLabel lblSat;
     private javax.swing.JPanel pnlPozadina;
     // End of variables declaration//GEN-END:variables
 
-  private void Kalendar(){
-        
-        pnlKalendar.setLayout(new BorderLayout());
-         
-        JCalendar cal = new JCalendar();
-        
-        pnlKalendar.setLayout(new BorderLayout());
-        pnlKalendar.add(cal,BorderLayout.CENTER);
-        pnlKalendar.validate();
-        
-       }
+
+    private void ucitajSliku(){
+        Image image = pozadina.getImage();
+       Image imageScale = image.getScaledInstance(lblPozadinskaSlika.getWidth(), lblPozadinskaSlika.getHeight(), Image.SCALE_SMOOTH);
+       ImageIcon  scaledIcon = new ImageIcon(imageScale);
+       lblPozadinskaSlika.setIcon(scaledIcon);
+    } 
+
+    @Override
+    public void run() {
+        while(true){
+            Calendar cal = Calendar.getInstance();
+            sat = cal.get(Calendar.HOUR_OF_DAY);
+            minuta = cal.get(Calendar.MINUTE);
+            sekunda = cal.get(Calendar.SECOND);
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            Date date = cal.getTime();
+            String vrijeme24 = sdf.format(date);
+            
+            lblSat.setText(vrijeme24);
+        }
+    }
+
 }

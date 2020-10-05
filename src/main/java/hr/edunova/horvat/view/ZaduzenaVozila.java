@@ -168,8 +168,8 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
 
         lblPoruka.setForeground(new java.awt.Color(204, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText(" Zaduzeno/Razduzeno Vozilo");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout pnlKontrolnoPoljeLayout = new javax.swing.GroupLayout(pnlKontrolnoPolje);
         pnlKontrolnoPolje.setLayout(pnlKontrolnoPoljeLayout);
@@ -247,6 +247,11 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         );
 
         lstRazduzenaVozila.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstRazduzenaVozila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstRazduzenaVozilaMouseClicked(evt);
+            }
+        });
         lstRazduzenaVozila.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstRazduzenaVozilaValueChanged(evt);
@@ -255,6 +260,11 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         jScrollPane2.setViewportView(lstRazduzenaVozila);
 
         lstZaduzenaVozila.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstZaduzenaVozila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstZaduzenaVozilaMouseClicked(evt);
+            }
+        });
         lstZaduzenaVozila.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstZaduzenaVozilaValueChanged(evt);
@@ -372,7 +382,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             return;
         }
         
-        entitet = lstZaduzenaVozila.getSelectedValue();
+        entitet = lstRazduzenaVozila.getSelectedValue();
         if (entitet == null) {
             return;
         }
@@ -422,6 +432,14 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lstZaduzenaVozilaValueChanged
+
+    private void lstZaduzenaVozilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstZaduzenaVozilaMouseClicked
+     
+    }//GEN-LAST:event_lstZaduzenaVozilaMouseClicked
+
+    private void lstRazduzenaVozilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstRazduzenaVozilaMouseClicked
+  
+    }//GEN-LAST:event_lstRazduzenaVozilaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;

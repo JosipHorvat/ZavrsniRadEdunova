@@ -49,7 +49,6 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         kontrolaModel();
         kontrolaRegistracijskaOznaka();
         kontrolaUkupnoPredjenihKm();
-        kontrolaJedinstvenaRegistracijskaOznaka();
        
     }
 
@@ -98,8 +97,22 @@ public class ObradaVozilo extends Obrada<Vozilo>{
            throw new MyException("Registracijska oznaka je dodijeljena vozilu: "+ lista.get(0).getNaziv()+ " "
            + lista.get(0).getModel());
        }
+       
    }
-   
+   private void kontrolaJedinstvenaRegistracijskaOznakaPromjeni() throws MyException{
+           
+        List<Vozilo> lista = session.createQuery(""
+       + " FROM Vozilo v "
+       + " WHERE v.registracijskaOznaka=:registracijskaOznaka and v.id!=:id "
+       )
+         .setParameter("registracijskaOznaka", entitet.getRegistracijskaOznaka())
+         .setParameter("id", entitet.getId())
+         .list();
+       if(lista.size()>0){
+           throw new MyException("Registracijska oznaka je dodijeljena vozilu: "+ lista.get(0).getNaziv()+ " "
+           + lista.get(0).getModel());
+       }
+       }
  
     
   private void kontrolaUkupnoPredjenihKm() throws MyException{
