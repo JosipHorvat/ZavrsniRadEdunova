@@ -25,8 +25,18 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
     /**
      * Creates new form Izbornik
      */
+    //Slika
     ImageIcon pozadina = new ImageIcon("transportIzbornik.jpg");
+    
+    //Vrijednosti za sat
     int sat,minuta,sekunda;
+    
+    //vrijednosti za kalkulator
+    double prviBroj;
+    double drugiBroj;
+    double iznos;
+    String matOperacija;
+    
     
     public Izbornik() {
         initComponents();
@@ -53,6 +63,25 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
         pnlPozadina = new javax.swing.JPanel();
         lblPozadinskaSlika = new javax.swing.JLabel();
         lblSat = new javax.swing.JLabel();
+        txtDisplay = new javax.swing.JTextField();
+        btnPodijeljeno = new javax.swing.JButton();
+        btnPuta = new javax.swing.JButton();
+        btnMinus = new javax.swing.JButton();
+        btnPlus = new javax.swing.JButton();
+        btnVrati = new javax.swing.JButton();
+        btnDevet = new javax.swing.JButton();
+        btnJednako = new javax.swing.JButton();
+        btnSest = new javax.swing.JButton();
+        btnTri = new javax.swing.JButton();
+        btnObrisi = new javax.swing.JButton();
+        btnTocka = new javax.swing.JButton();
+        btnNula = new javax.swing.JButton();
+        btnJedan = new javax.swing.JButton();
+        btnDva = new javax.swing.JButton();
+        btnPet = new javax.swing.JButton();
+        btnCetiri = new javax.swing.JButton();
+        btnOsam = new javax.swing.JButton();
+        btnSedam = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jmnIzbornik = new javax.swing.JMenu();
         jmiProizvodjaci = new javax.swing.JMenuItem();
@@ -80,24 +109,244 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
         lblSat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSat.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        txtDisplay.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtDisplay.setText("123455");
+
+        btnPodijeljeno.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPodijeljeno.setText("/");
+        btnPodijeljeno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPodijeljenoActionPerformed(evt);
+            }
+        });
+
+        btnPuta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPuta.setText("*");
+        btnPuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPutaActionPerformed(evt);
+            }
+        });
+
+        btnMinus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMinus.setText("-");
+        btnMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinusActionPerformed(evt);
+            }
+        });
+
+        btnPlus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPlus.setText("+");
+        btnPlus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlusActionPerformed(evt);
+            }
+        });
+
+        btnVrati.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVrati.setText("<<");
+
+        btnDevet.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDevet.setText("9");
+        btnDevet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevetActionPerformed(evt);
+            }
+        });
+
+        btnJednako.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnJednako.setText("=");
+        btnJednako.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJednakoActionPerformed(evt);
+            }
+        });
+
+        btnSest.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSest.setText("6");
+        btnSest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSestActionPerformed(evt);
+            }
+        });
+
+        btnTri.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTri.setText("3");
+        btnTri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTriActionPerformed(evt);
+            }
+        });
+
+        btnObrisi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnObrisi.setText("C");
+        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiActionPerformed(evt);
+            }
+        });
+
+        btnTocka.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTocka.setText(".");
+        btnTocka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTockaActionPerformed(evt);
+            }
+        });
+
+        btnNula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNula.setText("0");
+        btnNula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNulaActionPerformed(evt);
+            }
+        });
+
+        btnJedan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnJedan.setText("1");
+        btnJedan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJedanActionPerformed(evt);
+            }
+        });
+
+        btnDva.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDva.setText("2");
+        btnDva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDvaActionPerformed(evt);
+            }
+        });
+
+        btnPet.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPet.setText("5");
+        btnPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPetActionPerformed(evt);
+            }
+        });
+
+        btnCetiri.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCetiri.setText("4");
+        btnCetiri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetiriActionPerformed(evt);
+            }
+        });
+
+        btnOsam.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnOsam.setText("8");
+        btnOsam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOsamActionPerformed(evt);
+            }
+        });
+
+        btnSedam.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSedam.setText("7");
+        btnSedam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSedamActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlPozadinaLayout = new javax.swing.GroupLayout(pnlPozadina);
         pnlPozadina.setLayout(pnlPozadinaLayout);
         pnlPozadinaLayout.setHorizontalGroup(
             pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPozadinaLayout.createSequentialGroup()
                 .addComponent(lblPozadinskaSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(lblSat, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
+                        .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDisplay)
+                            .addGroup(pnlPozadinaLayout.createSequentialGroup()
+                                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
+                                        .addComponent(btnNula, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnTocka, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnJednako, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(4, 4, 4))
+                                    .addGroup(pnlPozadinaLayout.createSequentialGroup()
+                                        .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnSedam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(btnJedan, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                                .addComponent(btnCetiri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(16, 16, 16)
+                                        .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnDva, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(btnPet, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                                .addComponent(btnOsam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnPodijeljeno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnPuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnMinus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPlus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
+                        .addComponent(btnVrati, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDevet)
+                            .addComponent(btnObrisi)
+                            .addComponent(btnSest)
+                            .addComponent(btnTri))
+                        .addGap(62, 62, 62))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
+                        .addComponent(lblSat, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         pnlPozadinaLayout.setVerticalGroup(
             pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPozadinaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(txtDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPodijeljeno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVrati, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPuta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDevet, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOsam, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSedam, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPet, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCetiri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPozadinaLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(btnPlus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlPozadinaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnJedan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDva, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlPozadinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnJednako, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTocka, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSat, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
                 .addComponent(lblPozadinskaSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPozadinaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblSat, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
         );
 
         jMenuBar2.setBackground(new java.awt.Color(0, 0, 0));
@@ -180,7 +429,7 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlPozadina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +466,139 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
         new Proizvodjaci().setVisible(true);
     }//GEN-LAST:event_jmiProizvodjaciActionPerformed
 
+    private void btnPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetActionPerformed
+       String unesiBroj = txtDisplay.getText() + btnPet.getText();
+       txtDisplay.setText(unesiBroj);
+    }//GEN-LAST:event_btnPetActionPerformed
+
+    private void btnNulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNulaActionPerformed
+     String unesiBroj = txtDisplay.getText() + btnSest.getText();
+       txtDisplay.setText(unesiBroj);
+        
+    }//GEN-LAST:event_btnNulaActionPerformed
+
+    private void btnTockaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTockaActionPerformed
+    String unesiBroj = txtDisplay.getText() + btnTocka.getText();
+       txtDisplay.setText(unesiBroj);
+        
+           }//GEN-LAST:event_btnTockaActionPerformed
+
+    private void btnJednakoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJednakoActionPerformed
+        String rjesenje;
+        
+        drugiBroj= Double.parseDouble(txtDisplay.getText());
+        
+        if (matOperacija== "+"){
+            iznos= prviBroj+drugiBroj;
+            rjesenje = String.format("%.0f", iznos);
+            txtDisplay.setText(rjesenje);
+        }
+        else if(matOperacija== "-"){
+            iznos= prviBroj-drugiBroj;
+            rjesenje = String.format("%.0f", iznos);
+            txtDisplay.setText(rjesenje);  
+         }
+        else if(matOperacija== "*"){
+            iznos= prviBroj*drugiBroj;
+            rjesenje = String.format("%.0f", iznos);
+            txtDisplay.setText(rjesenje);  
+         }
+        else if(matOperacija== "/"){
+            iznos= prviBroj/drugiBroj;
+            rjesenje = String.format("%.0f", iznos);
+            txtDisplay.setText(rjesenje);  
+         }   
+    }//GEN-LAST:event_btnJednakoActionPerformed
+
+    private void btnJedanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJedanActionPerformed
+       String unesiBroj = txtDisplay.getText() + btnJedan.getText();
+       txtDisplay.setText(unesiBroj);
+    }//GEN-LAST:event_btnJedanActionPerformed
+
+    private void btnDvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDvaActionPerformed
+        String unesiBroj = txtDisplay.getText() + btnDva.getText();
+       txtDisplay.setText(unesiBroj);
+    }//GEN-LAST:event_btnDvaActionPerformed
+
+    private void btnTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriActionPerformed
+       String unesiBroj = txtDisplay.getText() + btnTri.getText();
+       txtDisplay.setText(unesiBroj); 
+    }//GEN-LAST:event_btnTriActionPerformed
+
+    private void btnCetiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetiriActionPerformed
+        String unesiBroj = txtDisplay.getText() + btnCetiri.getText();
+       txtDisplay.setText(unesiBroj); 
+    }//GEN-LAST:event_btnCetiriActionPerformed
+
+    private void btnSestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSestActionPerformed
+        String unesiBroj = txtDisplay.getText() + btnSest.getText();
+       txtDisplay.setText(unesiBroj); 
+    }//GEN-LAST:event_btnSestActionPerformed
+
+    private void btnSedamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSedamActionPerformed
+       String unesiBroj = txtDisplay.getText() + btnSedam.getText();
+       txtDisplay.setText(unesiBroj);
+    }//GEN-LAST:event_btnSedamActionPerformed
+
+    private void btnOsamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOsamActionPerformed
+       String unesiBroj = txtDisplay.getText() + btnOsam.getText();
+       txtDisplay.setText(unesiBroj);    }//GEN-LAST:event_btnOsamActionPerformed
+
+    private void btnDevetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevetActionPerformed
+       String unesiBroj = txtDisplay.getText() + btnDevet.getText();
+       txtDisplay.setText(unesiBroj);
+    }//GEN-LAST:event_btnDevetActionPerformed
+
+    private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
+       
+        prviBroj= Double.parseDouble(txtDisplay.getText());
+        txtDisplay.setText("");
+        matOperacija="+";       
+    }//GEN-LAST:event_btnPlusActionPerformed
+
+    private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
+        prviBroj= Double.parseDouble(txtDisplay.getText());
+        txtDisplay.setText("");
+        matOperacija="-";   
+    }//GEN-LAST:event_btnMinusActionPerformed
+
+    private void btnPodijeljenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPodijeljenoActionPerformed
+        prviBroj= Double.parseDouble(txtDisplay.getText());
+        txtDisplay.setText("");
+        matOperacija="/";
+              }//GEN-LAST:event_btnPodijeljenoActionPerformed
+
+    private void btnPutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPutaActionPerformed
+        prviBroj= Double.parseDouble(txtDisplay.getText());
+        txtDisplay.setText("");
+         matOperacija="*";
+           }//GEN-LAST:event_btnPutaActionPerformed
+
+    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
+       txtDisplay.setText("");
+    }//GEN-LAST:event_btnObrisiActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCetiri;
+    private javax.swing.JButton btnDevet;
+    private javax.swing.JButton btnDva;
+    private javax.swing.JButton btnJedan;
+    private javax.swing.JButton btnJednako;
+    private javax.swing.JButton btnMinus;
+    private javax.swing.JButton btnNula;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnOsam;
+    private javax.swing.JButton btnPet;
+    private javax.swing.JButton btnPlus;
+    private javax.swing.JButton btnPodijeljeno;
+    private javax.swing.JButton btnPuta;
+    private javax.swing.JButton btnSedam;
+    private javax.swing.JButton btnSest;
+    private javax.swing.JButton btnTocka;
+    private javax.swing.JButton btnTri;
+    private javax.swing.JButton btnVrati;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -238,6 +617,7 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
     private javax.swing.JLabel lblPozadinskaSlika;
     private javax.swing.JLabel lblSat;
     private javax.swing.JPanel pnlPozadina;
+    private javax.swing.JTextField txtDisplay;
     // End of variables declaration//GEN-END:variables
 
 
