@@ -5,6 +5,8 @@
  */
 package hr.edunova.horvat.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -61,7 +63,15 @@ public class ZaduzenoVozilo extends Entitet{
 
     @Override
     public String toString() {
-        return  getVozilo().getRegistracijskaOznaka() +" "+getVoziloZaduzeno()+ "//" + getVoziloRazduzeno();
+         // format datuma koji ce se ispisati u listi:
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+        //U listi zaduzena vozila ispisat ce se ona koja su zaduzena i obrnuto
+        if (getVoziloRazduzeno() == null) {
+            return getVozac().getImeIPrezime() + " - " + getVozilo().getNaziv() + " " + getVozilo().getModel() + ":  " + dateFormat.format(getVoziloZaduzeno());
+        } else {
+            return getVozac().getImeIPrezime() + " - " + getVozilo().getNaziv() + " " + getVozilo().getModel() + ": " + dateFormat.format(getVoziloRazduzeno());
+        }
                
     }
      
