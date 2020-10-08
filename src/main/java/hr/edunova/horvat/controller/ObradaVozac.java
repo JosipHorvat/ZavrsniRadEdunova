@@ -47,16 +47,20 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
     @Override
     protected void kontrolaDelete() throws MyException {
         kontrolaPrijevozaVozaca();
-          if(entitet.getZaduzenaVozila().size()>0){
-            throw new MyException("Vozac se ne moze obrisati jer nije uklonjeno razduzeno/zaduzeno vozilo");
-        }
-        
+        kontrolaZaduzenihVozila();
+             
     }
     
     private void kontrolaPrijevozaVozaca() throws MyException{
          if(entitet.getPrijevoz().size()>0){
         throw new MyException("Vozac se ne moze obrisati jer nije uklonjen zapis prijevoza");
          }
+    }
+    
+    private void kontrolaZaduzenihVozila() throws MyException{
+            if(entitet.getZaduzenaVozila().size()>0){
+            throw new MyException("Vozac se ne moze obrisati jer nije uklonjeno razduzeno/zaduzeno vozilo");
+        }
     }
     
      private void kontrolaOibBazaKreiraj() throws MyException{

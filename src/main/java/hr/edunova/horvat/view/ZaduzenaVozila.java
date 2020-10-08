@@ -29,12 +29,11 @@ import javax.swing.ImageIcon;
  * @author Josip
  */
 public class ZaduzenaVozila extends javax.swing.JFrame {
-    
-    ImageIcon createIcon = new ImageIcon("DatabaseDodajIcon.png");
-    ImageIcon updateIcon = new ImageIcon("updateIcon.png");
+     
     ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
-    ImageIcon searchIcon = new ImageIcon("searchIcon.png");
-    
+    ImageIcon zaduziVoziloIcon = new ImageIcon("ZaduziVozilo.png");
+    ImageIcon razduziVoziloIcon = new ImageIcon("razduziVozilo.png");
+      
     private ObradaZaduzenoVozilo obrada;
     private ZaduzenoVozilo entitet;
 
@@ -81,8 +80,8 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         cmbVozac = new javax.swing.JComboBox<>();
         cmbVozilo = new javax.swing.JComboBox<>();
-        btnDodaj = new javax.swing.JButton();
-        btnIzmijeni = new javax.swing.JButton();
+        btnZaduzi = new javax.swing.JButton();
+        btnRazduzi = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
         rbtnRazduziVozilo = new javax.swing.JRadioButton();
         rbtnZaduziVozilo = new javax.swing.JRadioButton();
@@ -105,17 +104,17 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         jLabel4.setText("Vozac");
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        btnDodaj.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+        btnZaduzi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnZaduzi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajActionPerformed(evt);
+                btnZaduziActionPerformed(evt);
             }
         });
 
-        btnIzmijeni.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnIzmijeni.addActionListener(new java.awt.event.ActionListener() {
+        btnRazduzi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnRazduzi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzmijeniActionPerformed(evt);
+                btnRazduziActionPerformed(evt);
             }
         });
 
@@ -176,43 +175,43 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         pnlKontrolnoPoljeLayout.setHorizontalGroup(
             pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnIzmijeni, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnRazduziVozilo)
-                    .addComponent(rbtnZaduziVozilo))
-                .addGap(37, 37, 37)
                 .addComponent(pnlDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(88, 88, 88))
             .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
-                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
-                            .addGap(44, 44, 44)
-                            .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(33, 33, 33)
-                            .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
-                            .addGap(80, 80, 80)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(34, 34, 34)))
-                    .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlKontrolnoPoljeLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jLabel1)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnZaduziVozilo)
+                            .addComponent(btnZaduzi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                                .addComponent(rbtnRazduziVozilo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(btnRazduzi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                                .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlKontrolnoPoljeLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
         pnlKontrolnoPoljeLayout.setVerticalGroup(
             pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,26 +223,25 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbVozac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addGap(50, 50, 50)
-                .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
-                        .addComponent(rbtnZaduziVozilo)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbtnRazduziVozilo)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
-                        .addComponent(pnlDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)))
+                .addGap(18, 18, 18)
+                .addComponent(pnlDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnObrisi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIzmijeni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDodaj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKontrolnoPoljeLayout.createSequentialGroup()
+                        .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbtnZaduziVozilo)
+                            .addComponent(rbtnRazduziVozilo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlKontrolnoPoljeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnZaduzi, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRazduzi, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnObrisi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
         );
 
         lstRazduzenaVozila.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -278,7 +276,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlKontrolnoPolje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -298,13 +296,13 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+    private void btnZaduziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZaduziActionPerformed
         
         lblPoruka.setText("");
         entitet = new ZaduzenoVozilo();
@@ -318,25 +316,29 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         } catch (MyException e) {
             lblPoruka.setText(e.getPoruka());
         }
-    }//GEN-LAST:event_btnDodajActionPerformed
+    }//GEN-LAST:event_btnZaduziActionPerformed
 
-    private void btnIzmijeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmijeniActionPerformed
+    private void btnRazduziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRazduziActionPerformed
         lblPoruka.setText("");
         entitet = lstZaduzenaVozila.getSelectedValue();
         if (entitet == null) {
             return;
-        }
+        }       
         postaviVrijednostiUEntitet();
         
         try {
+              if(dpUnesiDatum.getDate()== null){
+             throw new MyException ("Unesi datum razduzivanja vozila");
+              }   
             obrada.update();
             ucitajPodatke();
-            ocistiPolja();
+            ocistiPolja(); 
+           lblPoruka.setText("");
         } catch (MyException e) {
             lblPoruka.setText(e.getPoruka());
         }
-
-    }//GEN-LAST:event_btnIzmijeniActionPerformed
+               
+    }//GEN-LAST:event_btnRazduziActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         entitet = lstZaduzenaVozila.getSelectedValue();
@@ -442,9 +444,9 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     }//GEN-LAST:event_lstRazduzenaVozilaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDodaj;
-    private javax.swing.JButton btnIzmijeni;
     private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnRazduzi;
+    private javax.swing.JButton btnZaduzi;
     private javax.swing.JComboBox<Vozac> cmbVozac;
     private javax.swing.JComboBox<Vozilo> cmbVozilo;
     private com.github.lgooddatepicker.components.DatePicker dpUnesiDatum;
@@ -485,7 +487,7 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
             try {
                 entitet.setVoziloRazduzeno(Date.from(dpUnesiDatum.getDate().atStartOfDay()
                         .atZone(ZoneId.systemDefault())
-                        .toInstant()));
+                        .toInstant()));               
             } catch (Exception f) {
                 entitet.setVoziloRazduzeno(null);
             }
@@ -519,19 +521,19 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
     
     public void dodajSliku() {
         
-        Image image = createIcon.getImage();
-        Image imageScale = image.getScaledInstance(btnDodaj.getWidth(), btnDodaj.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(imageScale);
-        btnDodaj.setIcon(scaledIcon);
-        
-        Image image1 = updateIcon.getImage();
-        Image imageScale1 = image1.getScaledInstance(btnIzmijeni.getWidth(), btnIzmijeni.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon1 = new ImageIcon(imageScale1);
-        btnIzmijeni.setIcon(scaledIcon1);
-        
         Image image2 = deleteIcon.getImage();
         Image imageScale2 = image2.getScaledInstance(btnObrisi.getWidth(), btnObrisi.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(imageScale2);
         btnObrisi.setIcon(scaledIcon2);
+        
+        Image image = zaduziVoziloIcon.getImage();
+        Image imageScale = image.getScaledInstance(btnZaduzi.getWidth(), btnZaduzi.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imageScale);
+        btnZaduzi.setIcon(scaledIcon);
+        
+        Image image1 = razduziVoziloIcon.getImage();
+        Image imageScale1 = image1.getScaledInstance(btnRazduzi.getWidth(), btnRazduzi.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon1 = new ImageIcon(imageScale1);
+        btnRazduzi.setIcon(scaledIcon1);
     }
 }

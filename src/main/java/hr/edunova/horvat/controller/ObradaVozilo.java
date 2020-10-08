@@ -59,8 +59,6 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         }
     }
 
-//OVDJE SE VRATITI I POGLEDAT DA BOLJE UPISEM BIG DECIMAL 
-// I pregledati ostale kontrole ako nesto moze bolje
 
    private void kontrolaNaziva() throws MyException{
        PomocnaMetoda.neMozeBitiBroj(entitet.getNaziv(),"Naziv ne moze biti broj");
@@ -85,6 +83,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
        if(entitet.getRegistracijskaOznaka()== null || entitet.getRegistracijskaOznaka().trim().isEmpty()){
            throw new MyException("Registracijska oznaka mora biti unesena");
        }
+          
    }
    private void kontrolaJedinstvenaRegistracijskaOznaka() throws MyException{
        List<Vozilo> lista = session.createQuery(""
@@ -132,5 +131,14 @@ public class ObradaVozilo extends Obrada<Vozilo>{
            throw new MyException(poruka);
            }
        }
+   
+   // Ova kontrola je u Regex paterni da reg. oznaka mora biti u paterni: primjer(OS-123-OS)
+   // Oznaka ce biti neispravna u bilo kojem drugom obliku.
+   //NIJE DOBRO - reg oznake mogu biti prilagodjene 
+   private void kontrolaRegexRegistracijskaOznaka()throws MyException{
+         if (!entitet.getRegistracijskaOznaka().matches("^[a-žA-Ž]{2}-[0-9]{3}-[a-žA-Ž]{2}")) {
+            throw new MyException("Neispravan unos registracijske oznake");
+     }
+   }
     
 }
