@@ -110,7 +110,6 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
         lblSat.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         txtDisplay.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        txtDisplay.setText("123455");
 
         btnPodijeljeno.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPodijeljeno.setText("/");
