@@ -11,10 +11,8 @@ import hr.edunova.horvat.utility.MyException;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -252,7 +250,7 @@ public class Proizvodjaci extends javax.swing.JFrame {
         ucitajPodatke();
         ocistiPolja();
         }catch(MyException e){
-           lblPoruka.setText(e.getPoruka());
+          postaviPoruku(e.getPoruka());
         }
     }//GEN-LAST:event_btnDodajActionPerformed
 
@@ -268,7 +266,7 @@ public class Proizvodjaci extends javax.swing.JFrame {
           ucitajPodatke();
           ocistiPolja();
       }catch(MyException e){
-          lblPoruka.setText(e.getPoruka());
+         postaviPoruku(e.getPoruka());
       }
         
     }//GEN-LAST:event_btnIzmijeniActionPerformed
@@ -285,11 +283,32 @@ public class Proizvodjaci extends javax.swing.JFrame {
           ucitajPodatke();
           ocistiPolja();
       }catch(MyException e){
-          lblPoruka.setText(e.getPoruka());
+          postaviPoruku(e.getPoruka());
       }
        
     }//GEN-LAST:event_btnObrisiActionPerformed
+    private void postaviPoruku(String poruka ){
+        lblPoruka.setText(poruka);
+        OcistiPoruku op = new OcistiPoruku();
+        op.start();
+      
+    }
+    
+    private class OcistiPoruku extends Thread{
 
+        @Override
+        public void run() {
+          try {
+            Thread.sleep(3*1000);
+        } catch (InterruptedException ex) {
+      
+        }
+          lblPoruka.setText("");
+        }
+        
+    }
+    
+    
     private void btnWebStranicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebStranicaActionPerformed
         try {
             TraziWebStranicu();
