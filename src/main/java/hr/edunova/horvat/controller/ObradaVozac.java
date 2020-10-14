@@ -3,9 +3,6 @@ package hr.edunova.horvat.controller;
 
 import hr.edunova.horvat.model.Vozac;
 import hr.edunova.horvat.utility.MyException;
-import hr.edunova.horvat.utility.Oib;
-import hr.edunova.horvat.utility.PomocnaMetoda;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -40,9 +37,8 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
     @Override
     protected void kontrolaUpdate() throws MyException {
         super.kontrolaUpdate();
-        kontrolaOibBazaKreiraj();
         kontrolaOibBazaPromjeni();
-    }
+        }
 
     @Override
     protected void kontrolaDelete() throws MyException {
@@ -57,12 +53,12 @@ public class ObradaVozac extends ObradaOsoba<Vozac>{
          }
     }
     
-    private void kontrolaZaduzenihVozila() throws MyException{
-            if(entitet.getZaduzenaVozila().size()>0){
-            throw new MyException("Vozac se ne moze obrisati jer nije uklonjeno razduzeno/zaduzeno vozilo");
+    private void kontrolaZaduzenihVozila() throws MyException{                
+      
+        if(entitet.getZaduzenaVozila().size()>0){
+            throw new MyException("Vozac se ne moze obrisati jer ima zaduzeno vozilo");           
         }
     }
-    
      private void kontrolaOibBazaKreiraj() throws MyException{
        List<Vozac> lista = session.createQuery(""
                + " from Vozac v "

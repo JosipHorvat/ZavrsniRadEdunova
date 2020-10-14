@@ -49,6 +49,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         kontrolaModel();
         kontrolaRegistracijskaOznaka();
         kontrolaUkupnoPredjenihKm();
+        kontrolaJedinstvenaRegistracijskaOznakaPromjeni();
        
     }
 
@@ -134,7 +135,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
    
    // Ova kontrola je u Regex paterni da reg. oznaka mora biti u paterni: primjer(OS-123-OS)
    // Oznaka ce biti neispravna u bilo kojem drugom obliku.
-   //NIJE DOBRO - reg oznake mogu biti prilagodjene 
+   
    private void kontrolaRegexRegistracijskaOznaka()throws MyException{
          if (!entitet.getRegistracijskaOznaka().matches("^[a-žA-Ž]{2}-[0-9]{3}-[a-žA-Ž]{2}")) {
             throw new MyException("Neispravan unos registracijske oznake");
