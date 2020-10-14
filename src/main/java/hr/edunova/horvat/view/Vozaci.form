@@ -46,9 +46,9 @@
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="pnlPodaci" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -141,9 +141,7 @@
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel4" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Component id="txtOib" min="-2" pref="338" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                                   <Component id="txtEmail" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -156,9 +154,15 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblSlika" pref="100" max="32767" attributes="0"/>
                                   </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel3" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <Component id="txtOib" min="-2" pref="338" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnObrisiSliku" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="58" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -178,6 +182,7 @@
                           <Component id="txtPrezime" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblSlika" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="btnObrisiSliku" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -292,6 +297,18 @@
         <Component class="javax.swing.JLabel" name="lblSlika">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblSlikaMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lblSlikaKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnObrisiSliku">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="X"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiSlikuActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

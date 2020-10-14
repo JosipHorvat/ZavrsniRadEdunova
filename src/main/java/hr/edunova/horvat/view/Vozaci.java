@@ -15,16 +15,23 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
 import org.apache.commons.imaging.Imaging;
@@ -91,6 +98,7 @@ public class Vozaci extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         chbVerificiran = new javax.swing.JCheckBox();
         lblSlika = new javax.swing.JLabel();
+        btnObrisiSliku = new javax.swing.JButton();
         btnIzmijeni = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
@@ -145,6 +153,19 @@ public class Vozaci extends javax.swing.JFrame {
                 lblSlikaMouseClicked(evt);
             }
         });
+        lblSlika.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblSlikaKeyPressed(evt);
+            }
+        });
+
+        btnObrisiSliku.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnObrisiSliku.setText("X");
+        btnObrisiSliku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiSlikuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPodaciLayout = new javax.swing.GroupLayout(pnlPodaci);
         pnlPodaci.setLayout(pnlPodaciLayout);
@@ -165,9 +186,7 @@ public class Vozaci extends javax.swing.JFrame {
                                 .addComponent(chbVerificiran))
                             .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(pnlPodaciLayout.createSequentialGroup()
                                     .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,8 +195,13 @@ public class Vozaci extends javax.swing.JFrame {
                                             .addComponent(txtPrezime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                                             .addComponent(txtIme, javax.swing.GroupLayout.Alignment.LEADING)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblSlika, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
-                        .addContainerGap(49, Short.MAX_VALUE))))
+                                    .addComponent(lblSlika, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                .addGroup(pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnObrisiSliku)
+                        .addContainerGap(58, Short.MAX_VALUE))))
         );
         pnlPodaciLayout.setVerticalGroup(
             pnlPodaciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +215,8 @@ public class Vozaci extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnObrisiSliku, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -278,9 +303,9 @@ public class Vozaci extends javax.swing.JFrame {
                         .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlPodaci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(25, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,10 +317,9 @@ public class Vozaci extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnOcisti, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnIzmijeni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnObrisi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDodaj, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))))
+                            .addComponent(btnIzmijeni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnObrisi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDodaj, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -454,19 +478,45 @@ public class Vozaci extends javax.swing.JFrame {
                 ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
                 .getScaledInstance(100, 150, Image.SCALE_DEFAULT));
                 lblSlika.setIcon(ii);
-                
-                
+               
+                   
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-       
+            
     }//GEN-LAST:event_lblSlikaMouseClicked
+
+    private void lblSlikaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblSlikaKeyPressed
+            }//GEN-LAST:event_lblSlikaKeyPressed
+
+    private void btnObrisiSlikuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiSlikuActionPerformed
+       
+        Path imagePath = Paths.get("slike"+ File.separator
+                + "vozaci"+ File.separator + entitet.getId()+ ".png");
+          try {
+            Files.delete(imagePath);
+        } catch (IOException ex) {
+                    
+        }
+          File slika = new File("slike"+ File.separator + "nepoznato.jpg");
+       
+       try {
+            ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+            .getScaledInstance(100, 150, Image.SCALE_DEFAULT));
+            lblSlika.setIcon(ii);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+
+    }//GEN-LAST:event_btnObrisiSlikuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnIzmijeni;
     private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnObrisiSliku;
     private javax.swing.JButton btnOcisti;
     private javax.swing.JButton btnTrazilica;
     private javax.swing.JCheckBox chbVerificiran;
@@ -500,7 +550,7 @@ public class Vozaci extends javax.swing.JFrame {
     }
     
     public void dodajSliku(){
-      
+           
        Image image = createIcon.getImage();
        Image imageScale = image.getScaledInstance(btnDodaj.getWidth(), btnDodaj.getHeight(), Image.SCALE_SMOOTH);
        ImageIcon  scaledIcon = new ImageIcon(imageScale);
