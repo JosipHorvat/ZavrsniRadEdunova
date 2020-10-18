@@ -10,6 +10,7 @@ import hr.edunova.horvat.model.Proizvodjac;
 import hr.edunova.horvat.utility.MyException;
 import java.awt.Desktop;
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -27,10 +28,10 @@ public class Proizvodjaci extends javax.swing.JFrame {
     private ObradaProizvodjac obrada;
     private Proizvodjac entitet;
     
-    ImageIcon createIcon = new ImageIcon("DatabaseDodajIcon.png");
-    ImageIcon updateIcon = new ImageIcon("updateIcon.png");
-    ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
-    ImageIcon searchIcon = new ImageIcon("searchIcon.png");
+    ImageIcon createIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"DatabaseDodajIcon.png");
+    ImageIcon updateIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"updateIcon.png");
+    ImageIcon deleteIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"deleteIcon.png");
+    ImageIcon searchIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"searchIcon.png");
     /**
      * Creates new form Proizvodjaci
      */

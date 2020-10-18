@@ -8,6 +8,7 @@ package hr.edunova.horvat.view;
 import com.toedter.calendar.JCalendar;
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,7 +27,7 @@ public class Izbornik extends javax.swing.JFrame implements Runnable{
      * Creates new form Izbornik
      */
     //Slika
-    ImageIcon pozadina = new ImageIcon("transportIzbornik.jpg");
+    ImageIcon pozadina = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"transportIzbornik.jpg");
     
     //Vrijednosti za sat
     int sat,minuta,sekunda;

@@ -46,11 +46,11 @@ public class Vozaci extends javax.swing.JFrame {
     private Vozac entitet;
     
     
-    ImageIcon createIcon = new ImageIcon("DatabaseDodajIcon.png");
-    ImageIcon updateIcon = new ImageIcon("updateIcon.png");
-    ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
-    ImageIcon searchIcon = new ImageIcon("searchIcon.png");
-    ImageIcon cleanIcon = new ImageIcon("Metlica.png");
+    ImageIcon createIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"DatabaseDodajIcon.png");
+    ImageIcon updateIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"updateIcon.png");
+    ImageIcon deleteIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"deleteIcon.png");
+    ImageIcon searchIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"searchIcon.png");
+    ImageIcon cleanIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"Metlica.png");
     /**
      * Creates new form Vozaci
      */

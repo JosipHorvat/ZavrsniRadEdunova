@@ -15,8 +15,12 @@ import hr.edunova.horvat.model.Vozilo;
 import hr.edunova.horvat.model.ZaduzenoVozilo;
 import hr.edunova.horvat.utility.MyException;
 import java.awt.Image;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -29,10 +33,12 @@ import javax.swing.ImageIcon;
  * @author Josip
  */
 public class ZaduzenaVozila extends javax.swing.JFrame {
+//    "slike"+ File.separator+ "vozaci"+ 
+//                File.separator + entitet.getId()+ ".png");
      
-    ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
-    ImageIcon zaduziVoziloIcon = new ImageIcon("ZaduziVozilo.png");
-    ImageIcon razduziVoziloIcon = new ImageIcon("razduziVozilo.png");
+    ImageIcon deleteIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+ "deleteIcon.png");
+    ImageIcon zaduziVoziloIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"ZaduziVozilo.png");
+    ImageIcon razduziVoziloIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"razduziVozilo.png");
       
     private ObradaZaduzenoVozilo obrada;
     private ZaduzenoVozilo entitet;
@@ -54,9 +60,19 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         cmbVozilo.setModel(modelVozilo);
         
         DefaultComboBoxModel<Vozac> modelVozac = new DefaultComboBoxModel<>();
-        new ObradaVozac().getPodaci().forEach(j -> {
-            modelVozac.addElement(j);
+        List<Vozac> lista =  new ObradaVozac().getPodaci();
+        Collections.sort(lista,new Comparator<Vozac>(){
+            @Override
+            public int compare(Vozac o1, Vozac o2) {
+           return o1.getPrezime().compareTo(o2.getPrezime());
+            }
+        
         });
+      
+         lista.forEach(p-> {modelVozac.addElement(p);
+         
+         });
+               
         cmbVozac.setModel(modelVozac);
         
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
@@ -107,6 +123,12 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
 
         jLabel4.setText("Vozac");
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        cmbVozilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbVoziloActionPerformed(evt);
+            }
+        });
 
         btnZaduzi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnZaduzi.addActionListener(new java.awt.event.ActionListener() {
@@ -502,6 +524,10 @@ public class ZaduzenaVozila extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnObrisiActionPerformed
+
+    private void cmbVoziloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVoziloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbVoziloActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnObrisi;

@@ -15,6 +15,7 @@ import hr.edunova.horvat.utility.MyException;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.util.Date;
@@ -34,11 +35,11 @@ public class Vozila extends javax.swing.JFrame {
     private ObradaVozilo obrada;
     private Vozilo entitet;
     
-    ImageIcon createIcon = new ImageIcon("DatabaseDodajIcon.png");
-    ImageIcon updateIcon = new ImageIcon("updateIcon.png");
-    ImageIcon deleteIcon = new ImageIcon("deleteIcon.png");
-    ImageIcon searchIcon = new ImageIcon("searchIcon.png");
-    ImageIcon cleanIcon = new ImageIcon("Metlica.png");
+    ImageIcon createIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"DatabaseDodajIcon.png");
+    ImageIcon updateIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"updateIcon.png");
+    ImageIcon deleteIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"deleteIcon.png");
+    ImageIcon searchIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"searchIcon.png");
+    ImageIcon cleanIcon = new ImageIcon("slike"+ File.separator+ "ikonice" + File.separator+"Metlica.png");
     /**
      * Creates new form Vozila
      */

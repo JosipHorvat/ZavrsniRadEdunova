@@ -19,7 +19,7 @@ public class ObradaZaduzenoVozilo extends Obrada<ZaduzenoVozilo>{
     public List<ZaduzenoVozilo> getPodaci() {
         return session.createQuery("from ZaduzenoVozilo").list();     
     }
-
+    
     @Override
     protected void kontrolaCreate() throws MyException {
         kontrolaDozvoleZaduzivanjaVozila();

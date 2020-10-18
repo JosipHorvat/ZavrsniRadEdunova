@@ -25,8 +25,8 @@ import java.util.logging.Logger;
 public class Start {
 
     public static void main(String[] args) {
-        
-           /*
+
+        /*
         
         Svi view - Button za ciscenje 
         Trazilica u view vozila
@@ -40,25 +40,21 @@ public class Start {
         
         
        
-        */
-  
+         */
 //============= AUTORIZACIJA JFRAME=======================       
-          new Autorizacija().setVisible(true);
-        
-//=============UNOS PODATAKA SA FAKER=============         
-    // FakerPocetniInsert.izvedi();
+        new Autorizacija().setVisible(true);
 
- //===========UNOS ADMINA I OPERATERA ============= 
-  // FakerPocetniInsert.unosAdminOperatera();
-    
- //=======TEST ZA PRIJEVOZ =======================
- // KAKO HANDLATI EXCEPTION ZA BIG DECIMAL
+//=============UNOS PODATAKA SA FAKER=============         
+        // FakerPocetniInsert.izvedi();
+        //===========UNOS ADMINA I OPERATERA ============= 
+        // FakerPocetniInsert.unosAdminOperatera();
+        //=======TEST ZA PRIJEVOZ =======================
+        // KAKO HANDLATI EXCEPTION ZA BIG DECIMAL
 //        Prijevoz p = new Prijevoz();
 //        p.setPolaziste("o");
 //        p.setOdrediste("o"); 
- //  p.setCijena(new BigDecimal("abcd"));
+        //  p.setCijena(new BigDecimal("abcd"));
 //        p.setUkupnoKm(BigDecimal.ONE);
-        
 //        ObradaPrijevoz op = new ObradaPrijevoz();
 //        op.setEntitet(p);
 //        try{
@@ -82,9 +78,7 @@ public class Start {
 //          } catch (MyException ex) {
 //              System.out.println(ex.getPoruka());
 //        }   
-            
-            
- //=============TEST ZA VOZAC===================
+        //=============TEST ZA VOZAC===================
 //        Vozac vozac = new Vozac();
 //        vozac.setIme("Tomo");
 //        vozac.setOib("79335008696");
@@ -92,9 +86,8 @@ public class Start {
 //        vozac.setEmail("josiph988@gmail.com");
 //        vozac.setVerificiran(true);
 //########  NAUCITI KAKO ODRADITI DATUM I STRANI KLJUC ##########
-       // vozac.setVozilo(vozilo);
-       // vozac.setDatumRodjenja();
-       
+        // vozac.setVozilo(vozilo);
+        // vozac.setDatumRodjenja();
 //        ObradaVozac ov = new ObradaVozac();
 //        ov.setEntitet(vozac);
 //        try {
@@ -102,11 +95,8 @@ public class Start {
 //        } catch (MyException ex) {
 //            System.out.println(ex.getPoruka());
 //        }
-
-
 //============== FAKER POCETNI INSERT ===================
 //       HibernateUtil.getSessionFactory().openSession();
 //        FakerPocetniInsert.izvedi();
-       
     }
 }
